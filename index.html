@@ -1,1957 +1,1045 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
-
 <title>Walsall Aces Tennis Club</title>
-
 <meta name="description"
       content="Walsall Aces Tennis Club — Tennis, community and opportunity for players of all abilities.">
-
-
 <style>
-
 /* =====================================================
    COLOURS
    ===================================================== */
-
 :root {
-
     --navy: #071b3a;
     --navy-dark: #041329;
     --navy-light: #0d2b57;
-
     --green: #72bd32;
     --green-dark: #4f9220;
-
     --white: #ffffff;
-
     --light: #f4f7f2;
     --text: #172033;
     --muted: #687386;
-
 }
-
-
 /* =====================================================
    RESET
    ===================================================== */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 body {
-
     font-family:
         Arial,
         Helvetica,
         sans-serif;
-
     background: var(--white);
-
     color: var(--text);
-
     line-height: 1.6;
 }
-
 img {
     max-width: 100%;
     display: block;
 }
-
 a {
     text-decoration: none;
     color: inherit;
 }
-
-
 /* =====================================================
    HEADER
    ===================================================== */
-
 header {
-
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
-
     background: var(--navy);
-
     color: var(--white);
-
     box-shadow:
         0 4px 20px rgba(0,0,0,0.20);
-
 }
-
-
 .header-inner {
-
     max-width: 1200px;
-
     margin: auto;
-
     padding:
         10px 25px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 30px;
-
 }
-
-
 /* BRAND */
-
 .brand {
-
     display: flex;
-
     align-items: center;
-
     gap: 15px;
-
 }
-
-
 /*
    The original logo is square.
-
    border-radius: 50% makes the outer square
    background disappear and leaves the circular
    badge visible.
 */
-
 .brand-logo {
-
     width: 72px;
-
     height: 72px;
-
     object-fit: cover;
-
     border-radius: 50%;
-
 }
-
-
 .brand-text {
-
     font-size: 1.15rem;
-
     font-weight: 800;
-
     line-height: 1.1;
-
     letter-spacing: 0.5px;
-
 }
-
-
 .brand-text span {
-
     display: block;
-
     color: var(--green);
-
     font-size: 0.82rem;
-
     letter-spacing: 2px;
-
     margin-top: 5px;
-
 }
-
-
 /* NAVIGATION */
-
 nav {
-
     display: flex;
-
     align-items: center;
-
     gap: 28px;
-
 }
-
-
 nav a {
-
     position: relative;
-
     font-size: 0.94rem;
-
     font-weight: 600;
-
     padding: 8px 0;
-
     transition:
         color 0.2s ease;
-
 }
-
-
 nav a:hover {
-
     color: var(--green);
-
 }
-
-
 /* ACTIVE NAV */
-
 nav a.active {
-
     color: var(--green);
-
 }
-
-
 nav a.active::after {
-
     content: "";
-
     position: absolute;
-
     left: 0;
-
     right: 0;
-
     bottom: 0;
-
     height: 3px;
-
     background: var(--green);
-
 }
-
-
 /* =====================================================
    HERO
    ===================================================== */
-
 .hero {
-
     min-height: 600px;
-
     position: relative;
-
     display: flex;
-
     align-items: center;
-
     overflow: hidden;
-
     color: var(--white);
-
     background:
-
         linear-gradient(
             90deg,
             rgba(4,19,41,0.96) 0%,
             rgba(4,19,41,0.84) 42%,
             rgba(4,19,41,0.28) 100%
         ),
-
-        url("images/gallery-5.jpg");
-
+        url("images/hero.jpg");
     background-size: cover;
-
     background-position: center;
-
 }
-
-
 .hero-content {
-
     width: 100%;
-
     max-width: 1200px;
-
     margin: auto;
-
     padding:
         80px 25px;
-
 }
-
-
 .hero-kicker {
-
     color: var(--green);
-
     font-size: 1rem;
-
     font-weight: 800;
-
     letter-spacing: 4px;
-
     text-transform: uppercase;
-
     margin-bottom: 12px;
-
 }
-
-
 .hero h1 {
-
     font-size:
         clamp(3rem, 7vw, 6rem);
-
     line-height: 0.98;
-
     max-width: 800px;
-
     margin-bottom: 25px;
-
     text-transform: uppercase;
-
 }
-
-
 .hero h1 span {
-
     color: var(--green);
-
 }
-
-
 .hero p {
-
     max-width: 620px;
-
     font-size: 1.25rem;
-
     color: #e4eaf1;
-
     margin-bottom: 32px;
-
 }
-
-
 .hero-buttons {
-
     display: flex;
-
     gap: 15px;
-
     flex-wrap: wrap;
-
 }
-
-
 /* =====================================================
    BUTTONS
    ===================================================== */
-
 .button {
-
     display: inline-block;
-
     padding:
         13px 27px;
-
     border-radius: 30px;
-
     font-weight: 700;
-
     transition:
         all 0.2s ease;
-
 }
-
-
 .button-primary {
-
     background: var(--green);
-
     color: var(--navy);
-
 }
-
-
 .button-primary:hover {
-
     background: var(--white);
-
     transform: translateY(-2px);
-
 }
-
-
 .button-outline {
-
     border:
         2px solid var(--white);
-
     color: var(--white);
-
 }
-
-
 .button-outline:hover {
-
     background: var(--white);
-
     color: var(--navy);
-
 }
-
-
 /* =====================================================
    GENERAL SECTIONS
    ===================================================== */
-
 section {
-
     padding:
         80px 20px;
-
 }
-
-
 .container {
-
     max-width: 1100px;
-
     margin: auto;
-
 }
-
-
 .section-heading {
-
     text-align: center;
-
     margin-bottom: 50px;
-
 }
-
-
 .section-heading .eyebrow {
-
     color: var(--green);
-
     font-size: 0.85rem;
-
     font-weight: 800;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
-
     margin-bottom: 6px;
-
 }
-
-
 .section-heading h2 {
-
     color: var(--navy);
-
     font-size: 2.6rem;
-
     line-height: 1.1;
-
     margin-bottom: 12px;
-
 }
-
-
 .section-heading p {
-
     color: var(--muted);
-
     max-width: 650px;
-
     margin: auto;
-
 }
-
-
 .section-line {
-
     width: 60px;
-
     height: 4px;
-
     background: var(--green);
-
     border-radius: 10px;
-
     margin:
         15px auto;
-
 }
-
-
 /* =====================================================
    ABOUT
    ===================================================== */
-
 .about {
-
     background: var(--white);
-
 }
-
-
 .about-grid {
-
     display: grid;
-
     grid-template-columns:
         280px 1fr;
-
     gap: 65px;
-
     align-items: center;
-
 }
-
-
 .about-logo {
-
     display: flex;
-
     justify-content: center;
-
 }
-
-
 .about-logo img {
-
     width: 240px;
-
     height: 240px;
-
     object-fit: cover;
-
     border-radius: 50%;
-
 }
-
-
 .about-text {
-
     border-left:
         3px solid var(--green);
-
     padding-left: 35px;
-
 }
-
-
 .about-text .eyebrow {
-
     color: var(--green);
-
     font-size: 0.85rem;
-
     font-weight: 800;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
-
 }
-
-
 .about-text h3 {
-
     color: var(--navy);
-
     font-size: 2.1rem;
-
     margin-bottom: 15px;
-
 }
-
-
 .about-text p {
-
     color: var(--muted);
-
     margin-bottom: 15px;
-
 }
-
-
 /* =====================================================
    FEATURES
    ===================================================== */
-
 .features {
-
     background: var(--light);
-
 }
-
-
 .feature-grid {
-
     display: grid;
-
     grid-template-columns:
         repeat(4, 1fr);
-
     gap: 18px;
-
 }
-
-
 .feature-card {
-
     background: var(--white);
-
     border-radius: 10px;
-
     padding:
         32px 20px;
-
     text-align: center;
-
     box-shadow:
         0 8px 25px
         rgba(7,27,58,0.08);
-
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
-
 }
-
-
 .feature-card:hover {
-
     transform:
         translateY(-6px);
-
     box-shadow:
         0 15px 30px
         rgba(7,27,58,0.14);
-
 }
-
-
 .feature-icon {
-
     width: 58px;
-
     height: 58px;
-
     margin:
         0 auto 17px;
-
     border-radius: 50%;
-
     background: var(--green);
-
     color: var(--white);
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-size: 1.5rem;
-
 }
-
-
 .feature-card h3 {
-
     color: var(--navy);
-
     margin-bottom: 8px;
-
 }
-
-
 .feature-card p {
-
     color: var(--muted);
-
     font-size: 0.92rem;
-
 }
-
-
 /* =====================================================
    GALLERY
    ===================================================== */
-
 .gallery {
-
     background: var(--white);
-
 }
-
-
 .gallery-grid {
-
     display: grid;
-
     grid-template-columns:
         repeat(4, 1fr);
-
     grid-auto-rows:
         180px;
-
     gap: 12px;
-
 }
-
-
 .gallery-item {
-
     position: relative;
-
     overflow: hidden;
-
     border-radius: 8px;
-
     cursor: pointer;
-
     background: var(--navy);
-
 }
-
-
 .gallery-item.large {
-
     grid-row:
         span 2;
-
 }
-
-
 .gallery-item img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
     transition:
         transform 0.4s ease;
-
 }
-
-
 .gallery-item:hover img {
-
     transform:
         scale(1.07);
-
 }
-
-
 .gallery-overlay {
-
     position: absolute;
-
     inset: 0;
-
     display: flex;
-
     align-items: flex-end;
-
     padding: 18px;
-
     background:
         linear-gradient(
             transparent,
             rgba(4,19,41,0.75)
         );
-
     opacity: 0;
-
     transition:
         opacity 0.3s ease;
-
 }
-
-
 .gallery-item:hover
 .gallery-overlay {
-
     opacity: 1;
-
 }
-
-
 .gallery-overlay span {
-
     color: var(--white);
-
     font-weight: 700;
-
 }
-
-
 /* =====================================================
    CTA
    ===================================================== */
-
 .cta {
-
     position: relative;
-
     background: var(--navy);
-
     color: var(--white);
-
     text-align: center;
-
     overflow: hidden;
-
 }
-
-
 .cta::before {
-
     content: "";
-
     position: absolute;
-
     left: -40px;
-
     top: 0;
-
     width: 90px;
-
     height: 100%;
-
     background: var(--green);
-
     transform:
         skewX(-25deg);
-
 }
-
-
 .cta::after {
-
     content: "";
-
     position: absolute;
-
     right: -40px;
-
     top: 0;
-
     width: 90px;
-
     height: 100%;
-
     background: var(--green);
-
     transform:
         skewX(-25deg);
-
 }
-
-
 .cta-content {
-
     position: relative;
-
     z-index: 2;
-
 }
-
-
 .cta .eyebrow {
-
     color: var(--green);
-
     font-weight: 800;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
-
 }
-
-
 .cta h2 {
-
     font-size: 2.6rem;
-
     margin-bottom: 10px;
-
 }
-
-
 .cta p {
-
     color: #d8e0ec;
-
     margin-bottom: 25px;
-
 }
-
-
 /* =====================================================
    FOOTER
    ===================================================== */
-
 footer {
-
     background: var(--navy-dark);
-
     color: #cbd4df;
-
     padding:
         35px 20px;
-
 }
-
-
 .footer-inner {
-
     max-width: 1100px;
-
     margin: auto;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 30px;
-
 }
-
-
 .footer-brand {
-
     display: flex;
-
     align-items: center;
-
     gap: 12px;
-
 }
-
-
 .footer-brand img {
-
     width: 65px;
-
     height: 65px;
-
     border-radius: 50%;
-
 }
-
-
 .footer-brand strong {
-
     display: block;
-
     color: var(--white);
-
 }
-
-
 .footer-brand span {
-
     color: var(--green);
-
     font-size: 0.8rem;
-
     font-weight: 700;
-
     letter-spacing: 2px;
-
 }
-
-
 .footer-slogan {
-
     letter-spacing: 4px;
-
     font-size: 0.78rem;
-
     text-transform: uppercase;
-
 }
-
-
 .footer-social {
-
     display: flex;
-
     gap: 12px;
-
 }
-
-
 .footer-social a {
-
     width: 38px;
-
     height: 38px;
-
     border-radius: 50%;
-
     background:
         rgba(255,255,255,0.1);
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-weight: bold;
-
     transition:
         background 0.2s ease;
-
 }
-
-
 .footer-social a:hover {
-
     background: var(--green);
-
     color: var(--navy);
-
 }
-
-
 /* =====================================================
    COPYRIGHT
    ===================================================== */
-
 .copyright {
-
     text-align: center;
-
     border-top:
         1px solid rgba(255,255,255,0.08);
-
     margin-top: 25px;
-
     padding-top: 20px;
-
     font-size: 0.8rem;
-
     color: #7f8b9b;
-
 }
-
-
 /* =====================================================
    MOBILE
    ===================================================== */
-
 @media (max-width: 900px) {
-
-
     .header-inner {
-
         flex-direction: column;
-
         gap: 10px;
-
     }
-
-
     nav {
-
         flex-wrap: wrap;
-
         justify-content: center;
-
         gap: 18px;
-
     }
-
-
     .hero {
-
         min-height: 570px;
-
     }
-
-
     .feature-grid {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
-
-
     .gallery-grid {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
-
-
     .about-grid {
-
         grid-template-columns: 1fr;
-
         gap: 35px;
-
     }
-
-
     .about-text {
-
         border-left: none;
-
         border-top:
             3px solid var(--green);
-
         padding:
             25px 0 0;
-
     }
-
-
     .footer-inner {
-
         flex-direction: column;
-
         text-align: center;
-
     }
-
 }
-
-
 @media (max-width: 600px) {
-
-
     .brand-text {
-
         font-size: 1rem;
-
     }
-
-
     .brand-logo {
-
         width: 58px;
-
         height: 58px;
-
     }
-
-
     nav {
-
         gap: 12px;
-
     }
-
-
     nav a {
-
         font-size: 0.85rem;
-
     }
-
-
     .hero {
-
         min-height: 560px;
-
     }
-
-
     .hero-content {
-
         padding:
             60px 20px;
-
     }
-
-
     .hero h1 {
-
         font-size:
             2.9rem;
-
     }
-
-
     .hero p {
-
         font-size: 1rem;
-
     }
-
-
     .feature-grid {
-
         grid-template-columns: 1fr;
-
     }
-
-
     .gallery-grid {
-
         grid-template-columns: 1fr 1fr;
-
         grid-auto-rows:
             150px;
-
     }
-
-
     .gallery-item.large {
-
         grid-row:
             span 2;
-
     }
-
-
     section {
-
         padding:
             60px 20px;
-
     }
-
-
     .section-heading h2 {
-
         font-size: 2.1rem;
-
     }
-
-
     .cta h2 {
-
         font-size: 2.1rem;
-
     }
-
 }
-
 </style>
-
 </head>
-
-
 <body>
-
-
 <!-- ==================================================
      HEADER
      ================================================== -->
-
 <header>
-
     <div class="header-inner">
-
-
         <a href="#" class="brand">
-
             <img
                 src="watc-logo.jpeg"
                 alt="Walsall Aces Tennis Club logo"
                 class="brand-logo"
             >
-
             <div class="brand-text">
-
                 WALSALL ACES
-
                 <span>
                     TENNIS CLUB
                 </span>
-
             </div>
-
         </a>
-
-
         <nav>
-
             <a href="#" class="active">
                 Home
             </a>
-
             <a href="#about">
                 About
             </a>
-
             <a href="#tennis">
                 Tennis
             </a>
-
             <a href="#membership">
                 Membership
             </a>
-
             <a href="#gallery">
                 Gallery
             </a>
-
             <a href="#events">
                 Events
             </a>
-
             <a href="#contact">
                 Contact
             </a>
-
         </nav>
-
     </div>
-
 </header>
-
-
-
 <!-- ==================================================
      HERO
      ================================================== -->
-
 <section class="hero">
-
     <div class="hero-content">
-
-
         <div class="hero-kicker">
-
             Welcome To
-
         </div>
-
-
         <h1>
-
             Walsall Aces
-
             <span>
                 Tennis Club
             </span>
-
         </h1>
-
-
         <p>
-
             Tennis, community and opportunity
             for players of all abilities.
-
         </p>
-
-
         <div class="hero-buttons">
-
             <a
                 href="#about"
                 class="button button-primary"
             >
                 Discover The Club
             </a>
-
-
             <a
                 href="#contact"
                 class="button button-outline"
             >
                 Get In Touch
             </a>
-
         </div>
-
-
     </div>
-
 </section>
-
-
-
 <!-- ==================================================
      ABOUT
      ================================================== -->
-
 <section
     class="about"
     id="about"
 >
-
     <div class="container">
-
-
         <div class="section-heading">
-
             <div class="eyebrow">
                 About Us
             </div>
-
             <h2>
                 Welcome To Walsall Aces
             </h2>
-
             <div class="section-line"></div>
-
             <p>
                 A tennis club built around sport,
                 community and opportunity.
             </p>
-
         </div>
-
-
-
         <div class="about-grid">
-
-
             <div class="about-logo">
-
                 <img
                     src="watc-logo.jpeg"
                     alt="Walsall Aces Tennis Club"
                 >
-
             </div>
-
-
             <div class="about-text">
-
                 <div class="eyebrow">
                     Our Club
                 </div>
-
                 <h3>
                     A Club For The Community
                 </h3>
-
-
                 <p>
-
                     Walsall Aces Tennis Club is about
                     more than simply playing tennis.
-
                 </p>
-
-
                 <p>
-
                     We're building a friendly environment
                     where people can enjoy the game,
                     improve their skills and connect
                     with others.
-
                 </p>
-
-
                 <p>
-
                     Whether you're new to tennis,
                     returning to the game or an
                     experienced player, you'll find
                     a place at Walsall Aces.
-
                 </p>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
-
-
-
 <!-- ==================================================
      CLUB FEATURES
      ================================================== -->
-
 <section
     class="features"
     id="tennis"
 >
-
     <div class="container">
-
-
         <div class="section-heading">
-
             <div class="eyebrow">
                 What's Happening?
             </div>
-
             <h2>
                 Club Features
             </h2>
-
             <div class="section-line"></div>
-
             <p>
                 More information and features can
                 be added as the club website develops.
             </p>
-
         </div>
-
-
-
         <div class="feature-grid">
-
-
             <!-- TENNIS -->
-
             <div
                 class="feature-card"
                 id="tennis"
             >
-
                 <div class="feature-icon">
                     🎾
                 </div>
-
                 <h3>
                     Tennis
                 </h3>
-
                 <p>
                     Sessions, playing opportunities
                     and activities for all levels.
                 </p>
-
             </div>
-
-
-
             <!-- MEMBERSHIP -->
-
             <div
                 class="feature-card"
                 id="membership"
             >
-
                 <div class="feature-icon">
                     👥
                 </div>
-
                 <h3>
                     Membership
                 </h3>
-
                 <p>
                     Join the club, membership options
                     and what's included.
                 </p>
-
             </div>
-
-
-
             <!-- EVENTS -->
-
             <div
                 class="feature-card"
                 id="events"
             >
-
                 <div class="feature-icon">
                     📅
                 </div>
-
                 <h3>
                     Events
                 </h3>
-
                 <p>
                     Tournaments, social sessions
                     and club events.
                 </p>
-
             </div>
-
-
-
             <!-- COACHING -->
-
             <div class="feature-card">
-
                 <div class="feature-icon">
                     🎾
                 </div>
-
                 <h3>
                     Coaching
                 </h3>
-
                 <p>
                     Development, skills and support
                     for players of all abilities.
                 </p>
-
             </div>
-
-
         </div>
-
     </div>
-
 </section>
-
-
-
 <!-- ==================================================
      GALLERY
      ================================================== -->
-
 <section
     class="gallery"
     id="gallery"
 >
-
     <div class="container">
-
-
         <div class="section-heading">
-
             <div class="eyebrow">
                 Our Gallery
             </div>
-
             <h2>
                 Life At Walsall Aces
             </h2>
-
             <div class="section-line"></div>
-
             <p>
                 A snapshot of our club,
                 our players and our community.
             </p>
-
         </div>
-
-
-
         <div class="gallery-grid">
-
-
             <!-- IMAGE 1 -->
-
             <div class="gallery-item large">
-
                 <img
                     src="images/gallery-1.jpg"
                     alt="Tennis at Walsall Aces"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         On Court
                     </span>
-
                 </div>
-
             </div>
-
-
-
             <!-- IMAGE 2 -->
-
             <div class="gallery-item">
-
                 <img
                     src="images/gallery-2.jpg"
                     alt="Walsall Aces Tennis Club"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         Club Life
                     </span>
-
                 </div>
-
             </div>
-
-
-
             <!-- IMAGE 3 -->
-
             <div class="gallery-item">
-
                 <img
                     src="images/gallery-3.jpg"
                     alt="Tennis balls"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         Tennis
                     </span>
-
                 </div>
-
             </div>
-
-
-
             <!-- IMAGE 4 -->
-
             <div class="gallery-item">
-
                 <img
                     src="images/gallery-4.jpg"
                     alt="Walsall Aces players"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         Our Players
                     </span>
-
                 </div>
-
             </div>
-
-
-
             <!-- IMAGE 5 -->
-
             <div class="gallery-item">
-
                 <img
                     src="images/gallery-5.jpg"
                     alt="Tennis court"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         Our Courts
                     </span>
-
                 </div>
-
             </div>
-
-
-
             <!-- IMAGE 6 -->
-
             <div class="gallery-item">
-
                 <img
                     src="images/gallery-6.jpg"
                     alt="Tennis racket"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         On Court
                     </span>
-
                 </div>
-
             </div>
-
-
-
             <!-- IMAGE 7 -->
-
             <div class="gallery-item">
-
                 <img
                     src="images/gallery-7.jpg"
                     alt="Tennis net"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         Game On
                     </span>
-
                 </div>
-
             </div>
-
-
-
             <!-- IMAGE 8 -->
-
             <div class="gallery-item">
-
                 <img
                     src="images/gallery-8.jpg"
                     alt="Walsall Aces Tennis Club"
                 >
-
                 <div class="gallery-overlay">
-
                     <span>
                         Walsall Aces
                     </span>
-
                 </div>
-
             </div>
-
-
         </div>
-
     </div>
-
 </section>
-
-
-
 <!-- ==================================================
      CONTACT / CTA
      ================================================== -->
-
 <section
     class="cta"
     id="contact"
 >
-
     <div class="cta-content">
-
-
         <div class="eyebrow">
             Join The Club
         </div>
-
-
         <h2>
             Get In Touch
         </h2>
-
-
         <p>
             Interested in Walsall Aces Tennis Club?
             We'd love to hear from you.
         </p>
-
-
         <a
             href="mailto:YOUR-EMAIL-HERE"
             class="button button-primary"
         >
             ✉ &nbsp; Contact Us
         </a>
-
-
     </div>
-
 </section>
-
-
-
 <!-- ==================================================
      FOOTER
      ================================================== -->
-
 <footer>
-
     <div class="footer-inner">
-
-
         <div class="footer-brand">
-
             <img
                 src="watc-logo.jpeg"
                 alt="Walsall Aces Tennis Club"
             >
-
             <div>
-
                 <strong>
                     WALSALL ACES
                 </strong>
-
                 <span>
                     TENNIS CLUB
                 </span>
-
             </div>
-
         </div>
-
-
-
         <div class="footer-slogan">
-
             Tennis • Community • Opportunity
-
         </div>
-
-
-
         <div class="footer-social">
-
             <a href="#" aria-label="Facebook">
                 f
             </a>
-
             <a href="#" aria-label="Instagram">
                 ◎
             </a>
-
             <a href="#" aria-label="YouTube">
                 ▶
             </a>
-
         </div>
-
-
     </div>
-
-
     <div class="copyright">
-
         © 2026 Walsall Aces Tennis Club.
         All rights reserved.
-
     </div>
-
 </footer>
-
-
-
 </body>
-
 </html>

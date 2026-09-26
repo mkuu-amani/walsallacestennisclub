@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Walsall Access Tennis Club</title>
+
+    <meta name="description"
+          content="Welcome to Walsall Access Tennis Club. Tennis, community and opportunity for players of all abilities.">
+
+    <style>
+
+        /* =========================
+           COLOURS
+           ========================= */
+
+        :root {
+            --navy: #071b3a;
+            --navy-light: #0d2b57;
+            --green: #72bd32;
+            --green-dark: #4f9220;
+            --white: #ffffff;
+            --light: #f4f7f2;
+            --text: #172033;
+            --muted: #687386;
+        }
+
+
+        /* =========================
+           RESET
+           ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        header {
+            background: var(--navy);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.18);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 12px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text span {
+            display: block;
+            color: var(--green);
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--green);
+        }
+
+        .nav-button {
+            background: var(--green);
+            color: var(--navy);
+            padding: 10px 18px;
+            border-radius: 25px;
+        }
+
+        .nav-button:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .hero {
+            min-height: 620px;
+            background:
+                linear-gradient(
+                    rgba(7,27,58,0.91),
+                    rgba(7,27,58,0.91)
+                ),
+                url("watc-logo.jpeg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: var(--white);
+
+            padding: 80px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-logo {
+            width: 210px;
+            height: 210px;
+            object-fit: contain;
+            margin: 0 auto 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4.8rem);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto 30px;
+            font-size: 1.15rem;
+            color: #e5ebf3;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .button-primary {
+            background: var(--green);
+            color: var(--navy);
+        }
+
+        .button-primary:hover {
+            background: var(--white);
+        }
+
+        .button-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .button-outline:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+
+        /* =========================
+           GENERAL SECTIONS
+           ========================= */
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.3rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .section-heading .line {
+            width: 60px;
+            height: 4px;
+            background: var(--green);
+            margin: 15px auto;
+            border-radius: 5px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           ABOUT
+           ========================= */
+
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-logo img {
+            width: min(330px, 80%);
+        }
+
+        .about-text h3 {
+            color: var(--navy);
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           FEATURE CARDS
+           ========================= */
+
+        .features {
+            background: var(--light);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 35px 28px;
+            border-radius: 14px;
+            text-align: center;
+
+            box-shadow: 0 8px 25px rgba(7,27,58,0.08);
+
+            border-top: 4px solid var(--green);
+
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(7,27,58,0.13);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: var(--navy);
+            color: var(--green);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .feature-card h3 {
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+
+        /* =========================
+           CALL TO ACTION
+           ========================= */
+
+        .cta {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #d8e0ec;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            background: #041329;
+            color: #cbd4df;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .footer-logo {
+            width: 75px;
+            margin: 0 auto 15px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        .footer-green {
+            color: var(--green);
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 800px) {
+
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                min-height: 560px;
+            }
+
+            .hero-logo {
+                width: 170px;
+                height: 170px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .brand-text {
+                font-size: 0.9rem;
+            }
+
+            .brand img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-logo {
+                width: 145px;
+                height: 145px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+     ========================= -->
+
+<header>
+
+    <div class="header-inner">
+
+        <a href="#" class="brand">
+
+            <img src="watc-logo.jpeg"
+                 alt="Walsall Access Tennis Club logo">
+
+            <div class="brand-text">
+                Walsall Access Tennis Club
+                <span>Community • Tennis • Opportunity</span>
+            </div>
+
+        </a>
+
+
+        <nav>
+
+            <a href="#about">About</a>
+
+            <a href="#club">The Club</a>
+
+            <a href="#contact" class="nav-button">
+                Contact Us
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+     ========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <img
+            src="watc-logo.jpeg"
+            alt="Walsall Access Tennis Club"
+            class="hero-logo"
+        >
+
+        <h1>
+            Walsall <span>Access</span><br>
+            Tennis Club
+        </h1>
+
+        <p>
+            Welcome to Walsall Access Tennis Club —
+            a place where people can enjoy tennis,
+            meet others and be part of a community.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#about"
+               class="button button-primary">
+                Discover the Club
+            </a>
+
+            <a href="#contact"
+               class="button button-outline">
+                Get In Touch
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+     ========================= -->
+
+<section class="about" id="about">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Welcome to Walsall Access</h2>
+
+            <div class="line"></div>
+
+            <p>
+                Tennis for the community, with a welcoming
+                approach for players of all abilities.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-logo">
+
+                <img
+                    src="watc-logo.jpeg"
+                    alt="Walsall Access Tennis Club logo"
+                >
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>A Club For The Community</h3>
+
+                <p>
+                    Walsall Access Tennis Club is about more
+                    than simply playing tennis.
+                </p>
+
+                <p>
+                    We're building a friendly and inclusive
+                    environment where people can enjoy the
+                    game, improve their skills and connect
+                    with others.
+                </p>
+
+                <p>
+                    More information about the club,
+                    membership, sessions and activities
+                    will be added here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CLUB FEATURES
+     ========================= -->
+
+<section class="features" id="club">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>What's Happening?</h2>
+
+            <div class="line"></div>
+
+            <p>
+                More club information and features will
+                appear here as the website develops.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎾
+                </div>
+
+                <h3>Tennis</h3>
+
+                <p>
+                    Information about tennis sessions,
+                    playing opportunities and activities
+                    at the club.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    👥
+                </div>
+
+                <h3>Membership</h3>
+
+                <p>
+                    Find out about joining the club,
+                    membership options and what's
+                    included.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📅
+                </div>
+
+                <h3>Events</h3>
+
+                <p>
+                    Club events, tournaments, social
+                    sessions and other activities.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+     ========================= -->
+
+<section class="cta" id="contact">
+
+    <div class="container">
+
+        <h2>Come And Play</h2>
+
+        <p>
+            Interested in Walsall Access Tennis Club?
+            Get in touch to find out more.
+        </p>
+
+        <a href="mailto:YOUR-EMAIL-HERE"
+           class="button button-primary">
+            Contact The Club
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer>
+
+    <img
+        src="watc-logo.jpeg"
+        alt="Walsall Access Tennis Club"
+        class="footer-logo"
+    >
+
+    <p>
+        © 2026
+        <span class="footer-green">
+            Walsall Access Tennis Club
+        </span>
+    </p>
+
+    <p>
+        Tennis • Community • Opportunity
+    </p>
+
+</footer>
+
+
+</body>
+</html>

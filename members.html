@@ -2,13 +2,19 @@
 
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+   content="width=device-width, initial-scale=1.0">
 
 <title>Members | Walsall Aces Tennis Club</title>
-<meta name="robots" content="noindex, nofollow">
+
+<meta name="robots"
+   content="noindex, nofollow">
 
 <style>
+
 :root {
     --navy: #071b3a;
     --navy-dark: #041329;
@@ -17,6 +23,9 @@
     --light: #f4f7f2;
     --text: #172033;
     --muted: #687386;
+    --border: #d5dbe3;
+    --success: #16794a;
+    --error: #b42318;
 }
 
 * {
@@ -72,6 +81,16 @@ header a:hover {
 h1 {
     color: var(--navy);
     margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+h2 {
+    color: var(--navy);
+    margin: 28px 0 10px;
+}
+
+p {
+    margin-bottom: 10px;
 }
 
 .eyebrow {
@@ -95,9 +114,10 @@ select,
 textarea {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #d5dbe3;
+    border: 1px solid var(--border);
     border-radius: 8px;
     font: inherit;
+    background: #fff;
 }
 
 input:focus,
@@ -113,17 +133,36 @@ textarea {
     resize: vertical;
 }
 
+.field-note {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-top: 4px;
+}
+
+.required-note {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+}
+
+/* CHECKBOXES */
+
 .check {
     display: flex;
     gap: 10px;
     align-items: flex-start;
-    margin-top: 16px;
+    margin-top: 18px;
+    font-weight: 400;
+    color: var(--text);
 }
 
 .check input {
     width: auto;
-    margin-top: 4px;
+    margin-top: 5px;
+    flex: 0 0 auto;
 }
+
+/* BUTTON */
 
 button {
     margin-top: 22px;
@@ -134,6 +173,7 @@ button {
     padding: 13px 27px;
     font-weight: 800;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 button:hover {
@@ -145,9 +185,19 @@ button:disabled {
     cursor: not-allowed;
 }
 
+/* MESSAGES */
+
 .msg {
     margin-top: 16px;
     font-weight: 700;
+}
+
+.success {
+    color: var(--success);
+}
+
+.error {
+    color: var(--error);
 }
 
 .hidden {
@@ -155,13 +205,44 @@ button:disabled {
 }
 
 #error {
-    color: #b42318;
+    color: var(--error);
     margin-top: 12px;
 }
 
-/* ==============================
-   CLUB CALENDAR
-   ============================== */
+/* PRIVACY NOTICE */
+
+.privacy-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f7f9fb;
+    border: 1px solid #e1e6ec;
+    border-radius: 10px;
+}
+
+.privacy-box h2 {
+    margin-top: 0;
+    font-size: 1.15rem;
+}
+
+.privacy-box p {
+    font-size: 0.92rem;
+}
+
+.privacy-box ul {
+    margin: 10px 0 10px 20px;
+}
+
+.privacy-box li {
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+}
+
+.privacy-box a {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+/* CALENDAR */
 
 .calendar-wrap {
     margin: 18px 0 10px;
@@ -178,7 +259,26 @@ button:disabled {
     border: 0;
 }
 
-/* Mobile calendar adjustment */
+/* DIVIDER */
+
+.section-divider {
+    height: 1px;
+    background: #e1e6ec;
+    margin: 38px 0;
+}
+
+/* HONEYPOT */
+
+.website-field {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -191,18 +291,20 @@ button:disabled {
         padding: 22px 18px;
     }
 
-    .header-inner {
-        padding: 0 2px;
-    }
-
     header {
         padding: 14px 15px;
+    }
+
+    .header-inner {
+        padding: 0 2px;
     }
 
     .calendar-wrap iframe {
         min-height: 550px;
     }
+
 }
+
 </style>
 
 </head>
@@ -210,28 +312,45 @@ button:disabled {
 <body>
 
 <header>
-    <div class="header-inner">
-        <strong>WALSALL ACES</strong>
-        <a href="index.html">← Back to site</a>
-    </div>
+
+```
+<div class="header-inner">
+
+    <strong>WALSALL ACES</strong>
+
+    <a href="index.html">
+        ← Back to site
+    </a>
+
+</div>
+```
+
 </header>
 
 <div class="wrap">
 
 ```
-<!-- PASSWORD GATE -->
+<!-- =========================
+     PASSWORD GATE
+     ========================= -->
 
 <div class="card" id="gate">
 
-    <div class="eyebrow">Members</div>
+    <div class="eyebrow">
+        Members
+    </div>
 
-    <h1>Enter the club password</h1>
+    <h1>
+        Enter the club password
+    </h1>
 
     <p>
         This page is for current and joining members.
     </p>
 
-    <label for="password">Password</label>
+    <label for="password">
+        Password
+    </label>
 
     <input
         id="password"
@@ -239,26 +358,44 @@ button:disabled {
         autocomplete="current-password"
     >
 
-    <button type="button" id="unlock">
+    <button
+        type="button"
+        id="unlock"
+    >
         Open members area
     </button>
 
-    <p id="error" class="hidden">
+    <p
+        id="error"
+        class="hidden"
+    >
         That password is not correct.
     </p>
 
 </div>
 
 
-<!-- MEMBERS AREA -->
+<!-- =========================
+     MEMBERS AREA
+     ========================= -->
 
-<div class="card hidden" id="area">
+<div
+    class="card hidden"
+    id="area"
+>
 
-    <!-- CLUB CALENDAR -->
 
-    <div class="eyebrow">Members</div>
+    <!-- =========================
+         CLUB CALENDAR
+         ========================= -->
 
-    <h1>Club calendar</h1>
+    <div class="eyebrow">
+        Members
+    </div>
+
+    <h1>
+        Club calendar
+    </h1>
 
     <p>
         Upcoming sessions and events.
@@ -268,7 +405,6 @@ button:disabled {
 
         <iframe
             src="https://calendar.google.com/calendar/embed?src=walsallaces%40gmail.com&ctz=Europe%2FLondon&showTitle=0&showPrint=0&showTabs=1&showCalendars=0&showTz=0"
-            style="border:0"
             width="100%"
             height="600"
             frameborder="0"
@@ -279,76 +415,139 @@ button:disabled {
     </div>
 
 
-    <!-- MEMBERSHIP FORM -->
+    <div class="section-divider"></div>
 
-    <div class="eyebrow" style="margin-top:36px">
+
+    <!-- =========================
+         MEMBERSHIP
+         ========================= -->
+
+    <div class="eyebrow">
         Membership
     </div>
 
-    <h1>Membership form</h1>
+    <h1>
+        Membership form
+    </h1>
 
     <p>
-        Submit your details. The committee receives them in the club spreadsheet.
+        Please complete the form below to provide your
+        membership information.
     </p>
 
-    <form id="membership-form">
-        <input
-    type="text"
-    name="website"
-    tabindex="-1"
-    autocomplete="off"
-    style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"
-    aria-hidden="true"
->
+    <p class="required-note">
+        Fields marked as required must be completed.
+    </p>
 
-        <label for="fullName">Full name</label>
+
+    <form
+        id="membership-form"
+        novalidate
+    >
+
+
+        <!-- HONEYPOT FOR BASIC SPAM PROTECTION -->
+
+        <input
+            type="text"
+            name="website"
+            class="website-field"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+        >
+
+
+        <!-- FULL NAME -->
+
+        <label for="fullName">
+            Full name *
+        </label>
 
         <input
             id="fullName"
             name="fullName"
+            maxlength="150"
+            autocomplete="name"
             required
         >
 
 
-        <label for="email">Email</label>
+        <!-- EMAIL -->
+
+        <label for="email">
+            Email *
+        </label>
 
         <input
             id="email"
             name="email"
             type="email"
+            maxlength="254"
+            autocomplete="email"
             required
         >
 
 
-        <label for="phone">Phone</label>
+        <!-- PHONE -->
+
+        <label for="phone">
+            Phone *
+        </label>
 
         <input
             id="phone"
             name="phone"
             type="tel"
+            maxlength="50"
+            autocomplete="tel"
             required
         >
 
 
-        <label for="address">Address</label>
+        <!-- ADDRESS -->
+
+        <label for="address">
+            Address
+        </label>
 
         <input
             id="address"
             name="address"
+            maxlength="300"
+            autocomplete="street-address"
         >
 
+        <p class="field-note">
+            Please provide this only if required for club administration
+            or insurance purposes.
+        </p>
 
-        <label for="dob">Date of birth</label>
+
+        <!-- DOB -->
+
+        <label for="dob">
+            Date of birth
+        </label>
 
         <input
             id="dob"
             name="dob"
             type="date"
+            autocomplete="bday"
         >
 
+        <p class="field-note">
+            This information should only be provided where it is
+            genuinely required for membership, age category or
+            insurance purposes.
+        </p>
+
+
+        <!-- MEMBERSHIP TYPE -->
 
         <label for="membershipType">
-            Membership type
+            Membership type *
         </label>
 
         <select
@@ -356,16 +555,31 @@ button:disabled {
             name="membershipType"
             required
         >
+
             <option value="">
                 Please select
             </option>
 
-            <option>Adult</option>
-            <option>Junior</option>
-            <option>Family</option>
-            <option>Concession</option>
+            <option value="Adult">
+                Adult
+            </option>
+
+            <option value="Junior">
+                Junior
+            </option>
+
+            <option value="Family">
+                Family
+            </option>
+
+            <option value="Concession">
+                Concession
+            </option>
+
         </select>
 
+
+        <!-- PLAYING LEVEL -->
 
         <label for="playingLevel">
             Playing level
@@ -375,15 +589,27 @@ button:disabled {
             id="playingLevel"
             name="playingLevel"
         >
+
             <option value="">
                 Please select
             </option>
 
-            <option>Beginner</option>
-            <option>Intermediate</option>
-            <option>Advanced</option>
+            <option value="Beginner">
+                Beginner
+            </option>
+
+            <option value="Intermediate">
+                Intermediate
+            </option>
+
+            <option value="Advanced">
+                Advanced
+            </option>
+
         </select>
 
+
+        <!-- EMERGENCY CONTACT -->
 
         <label for="emergencyName">
             Emergency contact name
@@ -392,6 +618,7 @@ button:disabled {
         <input
             id="emergencyName"
             name="emergencyName"
+            maxlength="150"
         >
 
 
@@ -403,19 +630,68 @@ button:disabled {
             id="emergencyPhone"
             name="emergencyPhone"
             type="tel"
+            maxlength="50"
         >
 
+
+        <!-- NOTES -->
+
+        <label for="notes">
+            Notes
+        </label>
+
+        <textarea
+            id="notes"
+            name="notes"
+            maxlength="1000"
+        ></textarea>
+
+        <p class="field-note">
+            Please do not enter medical information or other sensitive
+            personal information in this box.
+        </p>
+
+
+        <!-- =========================
+             PRIVACY ACKNOWLEDGEMENT
+             ========================= -->
 
         <label class="check">
 
             <input
                 type="checkbox"
+                id="privacyAcknowledgement"
+                name="privacyAcknowledgement"
+                value="Yes"
+                required
+            >
+
+            <span>
+                I have read the privacy information below and understand
+                how Walsall Aces Tennis Club will use the information
+                submitted on this form.
+            </span>
+
+        </label>
+
+
+        <!-- =========================
+             PHOTO CONSENT
+             ========================= -->
+
+        <label class="check">
+
+            <input
+                type="checkbox"
+                id="photoConsent"
                 name="photoConsent"
                 value="Yes"
             >
 
             <span>
-                I consent to club photos being used on the website and social media.
+                I consent to photographs of me being used by
+                Walsall Aces Tennis Club on its website and social
+                media.
             </span>
 
         </label>
@@ -428,26 +704,101 @@ button:disabled {
         >
 
 
-        <label for="notes">
-            Notes
-        </label>
+        <!-- =========================
+             PRIVACY INFORMATION
+             ========================= -->
 
-        <textarea
-            id="notes"
-            name="notes"
-        ></textarea>
+        <div class="privacy-box">
 
+            <h2>
+                How we use your information
+            </h2>
+
+            <p>
+                Walsall Aces Tennis Club collects the information
+                provided on this form to administer club membership,
+                maintain appropriate membership records and support
+                club administration and insurance requirements.
+            </p>
+
+            <p>
+                We aim to collect only information that is relevant
+                and necessary for these purposes.
+            </p>
+
+            <p>
+                The club will normally rely on an appropriate lawful
+                basis under UK data-protection law for membership
+                administration. Where the club relies on legitimate
+                interests, those interests include the administration
+                and operation of the tennis club, maintaining appropriate
+                membership records and managing relevant insurance
+                requirements.
+            </p>
+
+            <p>
+                Your information may be accessed by authorised people
+                responsible for club administration and, where necessary,
+                shared with relevant organisations such as the club's
+                insurer where this is necessary for the stated purpose
+                and permitted by law.
+            </p>
+
+            <p>
+                Membership information is stored in a restricted-access
+                Google Sheet. Access is limited to authorised club
+                personnel who need the information for club administration.
+            </p>
+
+            <p>
+                We will retain personal information only for as long as
+                it is necessary for the purposes for which it was
+                collected, including any applicable insurance,
+                accounting or legal requirements. The club will review
+                retained information periodically and delete information
+                that is no longer required.
+            </p>
+
+            <p>
+                You may have rights under UK data-protection law,
+                including rights to request access to your information,
+                correction of inaccurate information, restriction of
+                processing and, where applicable, erasure or objection.
+            </p>
+
+            <p>
+                If you have a question about how your information is
+                handled, please contact the club through its normal
+                contact arrangements.
+            </p>
+
+            <p>
+                <strong>
+                    Please do not use the Notes field to provide medical
+                    information, health information or other sensitive
+                    personal information.
+                </strong>
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             SUBMIT
+             ========================= -->
 
         <button
             type="submit"
             id="submit-btn"
         >
-            Submit form
+            Submit membership form
         </button>
 
         <p
             class="msg"
             id="form-msg"
+            role="status"
+            aria-live="polite"
         ></p>
 
     </form>
@@ -459,6 +810,11 @@ button:disabled {
 
 <script>
 
+
+/* =========================================
+   SETTINGS
+   ========================================= */
+
 const CLUB_PASSWORD = "WATC@1";
 
 const SCRIPT_URL =
@@ -466,6 +822,10 @@ const SCRIPT_URL =
 
 const KEY = "watc-member-ok";
 
+
+/* =========================================
+   ELEMENTS
+   ========================================= */
 
 const gate =
 document.getElementById("gate");
@@ -476,10 +836,16 @@ document.getElementById("area");
 const error =
 document.getElementById("error");
 
+const password =
+document.getElementById("password");
 
-/* ==============================
+const unlock =
+document.getElementById("unlock");
+
+
+/* =========================================
    OPEN MEMBERS AREA
-   ============================== */
+   ========================================= */
 
 function openArea() {
 
@@ -490,130 +856,225 @@ function openArea() {
 }
 
 
-/* ==============================
-   REMEMBER SESSION
-   ============================== */
+/* =========================================
+   EXISTING SESSION
+   ========================================= */
 
-if (sessionStorage.getItem(KEY) === "1") {
+if (
+    sessionStorage.getItem(KEY) === "1"
+) {
 
     openArea();
 
 }
 
 
-/* ==============================
-   PASSWORD UNLOCK
-   ============================== */
+/* =========================================
+   PASSWORD
+   ========================================= */
 
-document
-.getElementById("unlock")
-.addEventListener("click", function () {
+unlock.addEventListener(
+    "click",
+    function () {
 
-    const value =
-    document.getElementById("password").value;
+        const value =
+        password.value.trim();
 
-    if (value === CLUB_PASSWORD) {
+        if (value === CLUB_PASSWORD) {
 
-        sessionStorage.setItem(KEY, "1");
+            sessionStorage.setItem(
+                KEY,
+                "1"
+            );
 
-        error.classList.add("hidden");
+            error.classList.add(
+                "hidden"
+            );
 
-        openArea();
+            openArea();
 
-    } else {
+        } else {
 
-        error.classList.remove("hidden");
+            error.classList.remove(
+                "hidden"
+            );
 
-    }
+            password.focus();
 
-});
-
-
-/* ==============================
-   ENTER KEY FOR PASSWORD
-   ============================== */
-
-document
-.getElementById("password")
-.addEventListener("keydown", function (e) {
-
-    if (e.key === "Enter") {
-
-        document
-        .getElementById("unlock")
-        .click();
+        }
 
     }
+);
 
-});
+
+/* =========================================
+   ENTER KEY
+   ========================================= */
+
+password.addEventListener(
+    "keydown",
+    function (e) {
+
+        if (e.key === "Enter") {
+
+            unlock.click();
+
+        }
+
+    }
+);
 
 
-/* ==============================
+/* =========================================
    MEMBERSHIP FORM
-   ============================== */
+   ========================================= */
 
 const form =
-document.getElementById("membership-form");
+document.getElementById(
+    "membership-form"
+);
 
-form.addEventListener("submit", function (e) {
+const submitBtn =
+document.getElementById(
+    "submit-btn"
+);
 
-    e.preventDefault();
+const formMsg =
+document.getElementById(
+    "form-msg"
+);
 
-    const btn =
-    document.getElementById("submit-btn");
+const consent =
+document.getElementById(
+    "photoConsent"
+);
 
-    const msg =
-    document.getElementById("form-msg");
+const consentFallback =
+document.getElementById(
+    "photoConsentFallback"
+);
 
-    const consent =
-    form.querySelector(
-        'input[name="photoConsent"][type="checkbox"]'
-    );
-
-    document
-    .getElementById("photoConsentFallback")
-    .disabled = consent.checked;
-
-
-    btn.disabled = true;
-
-    msg.textContent = "Sending…";
+const privacyAcknowledgement =
+document.getElementById(
+    "privacyAcknowledgement"
+);
 
 
-    fetch(
-        SCRIPT_URL,
-        {
-            method: "POST",
-            body: new FormData(form)
+/* =========================================
+   PHOTO CONSENT
+   ========================================= */
+
+consent.addEventListener(
+    "change",
+    function () {
+
+        consentFallback.disabled =
+        consent.checked;
+
+    }
+);
+
+
+/* =========================================
+   FORM SUBMISSION
+   ========================================= */
+
+form.addEventListener(
+    "submit",
+    async function (e) {
+
+        e.preventDefault();
+
+
+        /* Browser validation */
+
+        if (!form.checkValidity()) {
+
+            form.reportValidity();
+
+            return;
+
         }
-    )
 
-    .then(function () {
 
-        msg.textContent =
-        "Thank you. Your form has been sent.";
+        /* Photo consent */
 
-        form.reset();
+        consentFallback.disabled =
+        consent.checked;
 
-    })
 
-    .catch(function () {
+        /* Disable button */
 
-        msg.textContent =
-        "Something went wrong. Please try again or email the club.";
+        submitBtn.disabled = true;
 
-    })
+        formMsg.className =
+        "msg";
 
-    .finally(function () {
+        formMsg.textContent =
+        "Sending your membership form…";
 
-        btn.disabled = false;
 
-    });
+        try {
 
-});
+            const response =
+            await fetch(
+                SCRIPT_URL,
+                {
+                    method: "POST",
+                    body: new FormData(form)
+                }
+            );
+
+
+            const result =
+            await response.json();
+
+
+            if (
+                result &&
+                result.result === "success"
+            ) {
+
+                formMsg.className =
+                "msg success";
+
+                formMsg.textContent =
+                "Thank you. Your membership form has been received.";
+
+                form.reset();
+
+                consentFallback.disabled =
+                false;
+
+            } else {
+
+                throw new Error(
+                    "Submission was not accepted."
+                );
+
+            }
+
+
+        } catch (err) {
+
+            formMsg.className =
+            "msg error";
+
+            formMsg.textContent =
+            "We couldn't send your form. Please try again or contact the club.";
+
+        } finally {
+
+            submitBtn.disabled = false;
+
+        }
+
+    }
+);
 
 </script>
 
 </body>
 </html>
+
 

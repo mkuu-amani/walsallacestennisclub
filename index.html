@@ -11,11 +11,6 @@
       content="Walsall Aces Tennis Club — Tennis, community and opportunity for players of all abilities.">
 
 <style>
-
-/* =====================================================
-   COLOURS
-   ===================================================== */
-
 :root {
     --navy: #071b3a;
     --navy-dark: #041329;
@@ -28,10 +23,6 @@
     --muted: #687386;
 }
 
-/* =====================================================
-   RESET
-   ===================================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -43,18 +34,10 @@ html {
 }
 
 body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: var(--white);
     color: var(--text);
     line-height: 1.6;
-
-    /*
-       Leave room for the persistent radio player
-       at the bottom of the screen.
-    */
     padding-bottom: 195px;
 }
 
@@ -68,9 +51,9 @@ a {
     color: inherit;
 }
 
-/* =====================================================
+/* =========================
    HEADER
-   ===================================================== */
+========================= */
 
 header {
     position: sticky;
@@ -78,22 +61,18 @@ header {
     z-index: 1000;
     background: var(--navy);
     color: var(--white);
-    box-shadow:
-        0 4px 20px rgba(0,0,0,0.20);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.20);
 }
 
 .header-inner {
     max-width: 1200px;
     margin: auto;
-    padding:
-        10px 25px;
+    padding: 10px 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
 }
-
-/* BRAND */
 
 .brand {
     display: flex;
@@ -112,20 +91,16 @@ header {
     font-size: 1.15rem;
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
 }
 
 .brand-text span {
     display: block;
     color: var(--green);
-    font-size: 0.82rem;
+    font-size: .82rem;
     letter-spacing: 2px;
     margin-top: 5px;
 }
-
-/* =====================================================
-   NAVIGATION
-   ===================================================== */
 
 nav {
     display: flex;
@@ -135,18 +110,15 @@ nav {
 
 nav a {
     position: relative;
-    font-size: 0.94rem;
+    font-size: .94rem;
     font-weight: 600;
     padding: 8px 0;
-    transition:
-        color 0.2s ease;
+    transition: color .2s ease;
 }
 
 nav a:hover {
     color: var(--green);
 }
-
-/* ACTIVE NAV */
 
 nav a.active {
     color: var(--green);
@@ -162,9 +134,9 @@ nav a.active::after {
     background: var(--green);
 }
 
-/* =====================================================
+/* =========================
    HERO
-   ===================================================== */
+========================= */
 
 .hero {
     min-height: 600px;
@@ -173,14 +145,16 @@ nav a.active::after {
     align-items: center;
     overflow: hidden;
     color: var(--white);
+
     background:
         linear-gradient(
             90deg,
-            rgba(4,19,41,0.96) 0%,
-            rgba(4,19,41,0.84) 42%,
-            rgba(4,19,41,0.28) 100%
+            rgba(4,19,41,.96) 0%,
+            rgba(4,19,41,.84) 42%,
+            rgba(4,19,41,.28) 100%
         ),
         url("https://static.wixstatic.com/media/4657a4_5736a5188634477da5ff9f150b22b8c2~mv2.jpg");
+
     background-size: cover;
     background-position: center;
 }
@@ -189,8 +163,7 @@ nav a.active::after {
     width: 100%;
     max-width: 1200px;
     margin: auto;
-    padding:
-        80px 25px;
+    padding: 80px 25px;
 }
 
 .hero-kicker {
@@ -203,9 +176,8 @@ nav a.active::after {
 }
 
 .hero h1 {
-    font-size:
-        clamp(3rem, 7vw, 6rem);
-    line-height: 0.98;
+    font-size: clamp(3rem,7vw,6rem);
+    line-height: .98;
     max-width: 800px;
     margin-bottom: 25px;
     text-transform: uppercase;
@@ -228,18 +200,12 @@ nav a.active::after {
     flex-wrap: wrap;
 }
 
-/* =====================================================
-   BUTTONS
-   ===================================================== */
-
 .button {
     display: inline-block;
-    padding:
-        13px 27px;
+    padding: 13px 27px;
     border-radius: 30px;
     font-weight: 700;
-    transition:
-        all 0.2s ease;
+    transition: all .2s ease;
 }
 
 .button-primary {
@@ -253,8 +219,7 @@ nav a.active::after {
 }
 
 .button-outline {
-    border:
-        2px solid var(--white);
+    border: 2px solid var(--white);
     color: var(--white);
 }
 
@@ -263,13 +228,12 @@ nav a.active::after {
     color: var(--navy);
 }
 
-/* =====================================================
+/* =========================
    GENERAL SECTIONS
-   ===================================================== */
+========================= */
 
 section {
-    padding:
-        80px 20px;
+    padding: 80px 20px;
 }
 
 .container {
@@ -284,7 +248,7 @@ section {
 
 .section-heading .eyebrow {
     color: var(--green);
-    font-size: 0.85rem;
+    font-size: .85rem;
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -309,13 +273,12 @@ section {
     height: 4px;
     background: var(--green);
     border-radius: 10px;
-    margin:
-        15px auto;
+    margin: 15px auto;
 }
 
-/* =====================================================
+/* =========================
    ABOUT
-   ===================================================== */
+========================= */
 
 .about {
     background: var(--white);
@@ -323,8 +286,7 @@ section {
 
 .about-grid {
     display: grid;
-    grid-template-columns:
-        280px 1fr;
+    grid-template-columns: 280px 1fr;
     gap: 65px;
     align-items: center;
 }
@@ -342,14 +304,13 @@ section {
 }
 
 .about-text {
-    border-left:
-        3px solid var(--green);
+    border-left: 3px solid var(--green);
     padding-left: 35px;
 }
 
 .about-text .eyebrow {
     color: var(--green);
-    font-size: 0.85rem;
+    font-size: .85rem;
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -366,9 +327,9 @@ section {
     margin-bottom: 15px;
 }
 
-/* =====================================================
-   FEATURES
-   ===================================================== */
+/* =========================
+   CLUB FEATURES
+========================= */
 
 .features {
     background: var(--light);
@@ -376,38 +337,30 @@ section {
 
 .feature-grid {
     display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
 .feature-card {
     background: var(--white);
     border-radius: 10px;
-    padding:
-        32px 20px;
+    padding: 32px 20px;
     text-align: center;
-    box-shadow:
-        0 8px 25px
-        rgba(7,27,58,0.08);
+    box-shadow: 0 8px 25px rgba(7,27,58,.08);
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 .feature-card:hover {
-    transform:
-        translateY(-6px);
-    box-shadow:
-        0 15px 30px
-        rgba(7,27,58,0.14);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(7,27,58,.14);
 }
 
 .feature-icon {
     width: 58px;
     height: 58px;
-    margin:
-        0 auto 17px;
+    margin: 0 auto 17px;
     border-radius: 50%;
     background: var(--green);
     color: var(--white);
@@ -424,12 +377,12 @@ section {
 
 .feature-card p {
     color: var(--muted);
-    font-size: 0.92rem;
+    font-size: .92rem;
 }
 
-/* =====================================================
+/* =========================
    GALLERY
-   ===================================================== */
+========================= */
 
 .gallery {
     background: var(--white);
@@ -437,10 +390,8 @@ section {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns:
-        repeat(4, 1fr);
-    grid-auto-rows:
-        180px;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: 180px;
     gap: 12px;
 }
 
@@ -453,21 +404,18 @@ section {
 }
 
 .gallery-item.large {
-    grid-row:
-        span 2;
+    grid-row: span 2;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition:
-        transform 0.4s ease;
+    transition: transform .4s ease;
 }
 
 .gallery-item:hover img {
-    transform:
-        scale(1.07);
+    transform: scale(1.07);
 }
 
 .gallery-overlay {
@@ -476,18 +424,15 @@ section {
     display: flex;
     align-items: flex-end;
     padding: 18px;
-    background:
-        linear-gradient(
-            transparent,
-            rgba(4,19,41,0.75)
-        );
+    background: linear-gradient(
+        transparent,
+        rgba(4,19,41,.75)
+    );
     opacity: 0;
-    transition:
-        opacity 0.3s ease;
+    transition: opacity .3s ease;
 }
 
-.gallery-item:hover
-.gallery-overlay {
+.gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
@@ -496,9 +441,9 @@ section {
     font-weight: 700;
 }
 
-/* =====================================================
+/* =========================
    CTA
-   ===================================================== */
+========================= */
 
 .cta {
     position: relative;
@@ -516,8 +461,7 @@ section {
     width: 90px;
     height: 100%;
     background: var(--green);
-    transform:
-        skewX(-25deg);
+    transform: skewX(-25deg);
 }
 
 .cta::after {
@@ -528,8 +472,7 @@ section {
     width: 90px;
     height: 100%;
     background: var(--green);
-    transform:
-        skewX(-25deg);
+    transform: skewX(-25deg);
 }
 
 .cta-content {
@@ -554,9 +497,9 @@ section {
     margin-bottom: 25px;
 }
 
-/* =====================================================
-   MEMBERS PAGE CONTAINER
-   ===================================================== */
+/* =========================
+   MEMBERS AREA
+========================= */
 
 #members-page {
     display: none;
@@ -573,15 +516,14 @@ section {
     background: var(--white);
 }
 
-/* =====================================================
+/* =========================
    FOOTER
-   ===================================================== */
+========================= */
 
 footer {
     background: var(--navy-dark);
     color: #cbd4df;
-    padding:
-        35px 20px 25px;
+    padding: 35px 20px 25px;
 }
 
 .footer-inner {
@@ -612,14 +554,14 @@ footer {
 
 .footer-brand span {
     color: var(--green);
-    font-size: 0.8rem;
+    font-size: .8rem;
     font-weight: 700;
     letter-spacing: 2px;
 }
 
 .footer-slogan {
     letter-spacing: 4px;
-    font-size: 0.78rem;
+    font-size: .78rem;
     text-transform: uppercase;
 }
 
@@ -632,14 +574,12 @@ footer {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background:
-        rgba(255,255,255,0.1);
+    background: rgba(255,255,255,.1);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    transition:
-        background 0.2s ease;
+    transition: background .2s ease;
 }
 
 .footer-social a:hover {
@@ -647,35 +587,22 @@ footer {
     color: var(--navy);
 }
 
-/* =====================================================
-   PERSISTENT RADIO PLAYER
-   ===================================================== */
+/* =========================
+   RADIO PLAYER
+========================= */
 
 .footer-radio {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
-
     z-index: 5000;
-
     margin: 0;
-    padding:
-        12px 20px 14px;
-
+    padding: 12px 20px 14px;
     text-align: center;
-
-    background:
-        rgba(4,19,41,0.98);
-
-    border-top:
-        2px solid
-        rgba(114,189,50,0.35);
-
-    box-shadow:
-        0 -8px 30px
-        rgba(0,0,0,0.30);
-
+    background: rgba(4,19,41,.98);
+    border-top: 2px solid rgba(114,189,50,.35);
+    box-shadow: 0 -8px 30px rgba(0,0,0,.30);
     backdrop-filter: blur(12px);
 }
 
@@ -683,24 +610,13 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-
     margin-bottom: 8px;
-
-    padding:
-        5px 12px;
-
+    padding: 5px 12px;
     border-radius: 999px;
-
-    background:
-        rgba(114,189,50,0.12);
-
-    border:
-        1px solid
-        rgba(114,189,50,0.3);
-
+    background: rgba(114,189,50,.12);
+    border: 1px solid rgba(114,189,50,.3);
     color: var(--white);
-
-    font-size: 0.68rem;
+    font-size: .68rem;
     font-weight: 800;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -708,52 +624,28 @@ footer {
 
 .footer-radio-label::before {
     content: "";
-
     width: 7px;
     height: 7px;
-
     flex-shrink: 0;
-
     border-radius: 50%;
-
     background: var(--green);
-
-    box-shadow:
-        0 0 10px
-        rgba(114,189,50,0.9);
+    box-shadow: 0 0 10px rgba(114,189,50,.9);
 }
 
 .footer-radio-player {
     display: block;
-
     width: 470px;
     max-width: 100%;
-
     height: 145px;
-
     margin: 0 auto;
-
     border: 0;
     border-radius: 5px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,.3);
 }
 
-/* =====================================================
-   MOBILE RADIO PLAYER
-   ===================================================== */
-
-/*
-   The desktop RadioKing player above remains untouched.
-
-   On mobile only, the large iframe is replaced by this
-   compact native HTML5 player.
-
-   The audio element uses the direct RadioKing stream,
-   so listeners stay on the Walsall Aces website.
-*/
+/* =========================
+   MOBILE RADIO
+========================= */
 
 .mobile-radio {
     display: none;
@@ -770,33 +662,24 @@ footer {
 
 .mobile-radio-button {
     flex-shrink: 0;
-
     width: 46px;
     height: 46px;
-
-    border: 2px solid rgba(114,189,50,0.65);
+    border: 2px solid rgba(114,189,50,.65);
     border-radius: 50%;
-
     background: var(--green);
     color: var(--navy-dark);
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 1rem;
     font-weight: 900;
-
     cursor: pointer;
-
-    box-shadow:
-        0 4px 14px rgba(0,0,0,0.25);
-
+    box-shadow: 0 4px 14px rgba(0,0,0,.25);
     -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-radio-button:active {
-    transform: scale(0.95);
+    transform: scale(.95);
 }
 
 .mobile-radio-info {
@@ -807,9 +690,9 @@ footer {
 
 .mobile-radio-title {
     color: var(--white);
-    font-size: 0.85rem;
+    font-size: .85rem;
     font-weight: 900;
-    letter-spacing: 0.6px;
+    letter-spacing: .6px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -819,12 +702,9 @@ footer {
     display: flex;
     align-items: center;
     gap: 6px;
-
     margin-top: 3px;
-
     color: #aebed0;
-
-    font-size: 0.65rem;
+    font-size: .65rem;
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -840,47 +720,35 @@ footer {
 
 .mobile-radio.playing .mobile-radio-dot {
     background: var(--green);
-
-    box-shadow:
-        0 0 9px
-        rgba(114,189,50,0.9);
-
-    animation:
-        mobileRadioPulse 1.5s infinite;
+    box-shadow: 0 0 9px rgba(114,189,50,.9);
+    animation: mobileRadioPulse 1.5s infinite;
 }
 
 @keyframes mobileRadioPulse {
-
-    0%,
-    100% {
+    0%,100% {
         opacity: 1;
         transform: scale(1);
     }
 
     50% {
-        opacity: 0.45;
-        transform: scale(0.75);
+        opacity: .45;
+        transform: scale(.75);
     }
-
 }
-
-/* =====================================================
-   COPYRIGHT
-   ===================================================== */
 
 .copyright {
     text-align: center;
     margin-top: 25px;
     padding-top: 0;
-    font-size: 0.8rem;
+    font-size: .8rem;
     color: #7f8b9b;
 }
 
-/* =====================================================
-   MOBILE
-   ===================================================== */
+/* =========================
+   TABLET
+========================= */
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
 
     .header-inner {
         flex-direction: column;
@@ -898,13 +766,11 @@ footer {
     }
 
     .feature-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .gallery-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .about-grid {
@@ -914,25 +780,21 @@ footer {
 
     .about-text {
         border-left: none;
-        border-top:
-            3px solid var(--green);
-        padding:
-            25px 0 0;
+        border-top: 3px solid var(--green);
+        padding: 25px 0 0;
     }
 
     .footer-inner {
         flex-direction: column;
         text-align: center;
     }
-
 }
 
-@media (max-width: 600px) {
+/* =========================
+   MOBILE
+========================= */
 
-    /*
-       CHANGED ONLY FOR THE NEW COMPACT MOBILE PLAYER.
-       The old 185px space is no longer required.
-    */
+@media (max-width:600px) {
 
     body {
         padding-bottom: 78px;
@@ -952,7 +814,7 @@ footer {
     }
 
     nav a {
-        font-size: 0.85rem;
+        font-size: .85rem;
     }
 
     .hero {
@@ -960,13 +822,11 @@ footer {
     }
 
     .hero-content {
-        padding:
-            60px 20px;
+        padding: 60px 20px;
     }
 
     .hero h1 {
-        font-size:
-            2.9rem;
+        font-size: 2.9rem;
     }
 
     .hero p {
@@ -978,20 +838,16 @@ footer {
     }
 
     .gallery-grid {
-        grid-template-columns:
-            1fr 1fr;
-        grid-auto-rows:
-            150px;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 150px;
     }
 
     .gallery-item.large {
-        grid-row:
-            span 2;
+        grid-row: span 2;
     }
 
     section {
-        padding:
-            60px 20px;
+        padding: 60px 20px;
     }
 
     .section-heading h2 {
@@ -1002,13 +858,8 @@ footer {
         font-size: 2.1rem;
     }
 
-    /* =================================================
-       MOBILE RADIO — ONLY MOBILE CHANGE
-       ================================================= */
-
     .footer-radio {
-        padding:
-            6px 10px 8px;
+        padding: 6px 10px 8px;
     }
 
     .footer-radio-label,
@@ -1024,28 +875,16 @@ footer {
         height: calc(100vh - 150px);
         min-height: 850px;
     }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ==================================================
-     HEADER
-     ================================================== -->
-
 <header>
-
     <div class="header-inner">
 
-        <a
-            href="#"
-            class="brand"
-            id="homeBrand"
-        >
-
+        <a href="#" class="brand" id="homeBrand">
             <img
                 src="watc-logo.jpeg"
                 alt="Walsall Aces Tennis Club logo"
@@ -1053,513 +892,438 @@ footer {
             >
 
             <div class="brand-text">
-
                 WALSALL ACES
-
-                <span>
-                    TENNIS CLUB
-                </span>
-
+                <span>TENNIS CLUB</span>
             </div>
-
         </a>
 
         <nav>
-
-            <a
-                href="#"
-                class="active"
-                data-home-link
-            >
-                Home
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#tennis">
-                Tennis
-            </a>
-
-            <a
-                href="members.html"
-                id="membershipLink"
-            >
-                Membership
-            </a>
-
-            <a href="#gallery">
-                Gallery
-            </a>
-
-            <a href="#events">
-                Events
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
+            <a href="#" class="active" data-home-link>Home</a>
+            <a href="#about">About</a>
+            <a href="#tennis">Tennis</a>
+            <a href="members.html" id="membershipLink">Membership</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#events">Events</a>
+            <a href="#contact">Contact</a>
         </nav>
 
     </div>
-
 </header>
-
-
-<!-- ==================================================
-     HOME PAGE CONTENT
-     ================================================== -->
 
 <div id="home-content">
 
+    <!-- =========================
+         HERO
+    ========================== -->
 
-<!-- ==================================================
-     HERO
-     ================================================== -->
+    <section class="hero">
 
-<section class="hero">
+        <div class="hero-content">
 
-    <div class="hero-content">
-
-        <div class="hero-kicker">
-            Welcome To
-        </div>
-
-        <h1>
-
-            Walsall Aces
-
-            <span>
-                Tennis Club
-            </span>
-
-        </h1>
-
-        <p>
-            Tennis, community and opportunity
-            for players who love the sport.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a
-                href="#about"
-                class="button button-primary"
-            >
-                Discover The Club
-            </a>
-
-            <a
-                href="#contact"
-                class="button button-outline"
-            >
-                Get In Touch
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     ABOUT
-     ================================================== -->
-
-<section
-    class="about"
-    id="about"
->
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                About Us
+            <div class="hero-kicker">
+                Welcome To
             </div>
 
-            <h2>
-                Welcome To Walsall Aces
-            </h2>
-
-            <div class="section-line"></div>
+            <h1>
+                Walsall Aces
+                <span>Tennis Club</span>
+            </h1>
 
             <p>
-                A tennis club built around sport,
-                community and opportunity.
+                Tennis, community and opportunity for players
+                who love the sport.
             </p>
 
-        </div>
+            <div class="hero-buttons">
 
-
-        <div class="about-grid">
-
-            <div class="about-logo">
-
-                <img
-                    src="watc-logo.jpeg"
-                    alt="Walsall Aces Tennis Club"
+                <a
+                    href="#about"
+                    class="button button-primary"
                 >
+                    Discover The Club
+                </a>
+
+                <a
+                    href="#contact"
+                    class="button button-outline"
+                >
+                    Get In Touch
+                </a>
 
             </div>
 
+        </div>
 
-            <div class="about-text">
+    </section>
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+        class="about"
+        id="about"
+    >
+
+        <div class="container">
+
+            <div class="section-heading">
 
                 <div class="eyebrow">
-                    Our Club
+                    About Us
                 </div>
 
-                <h3>
-                    A Club For The Community
-                </h3>
+                <h2>
+                    Welcome To Walsall Aces
+                </h2>
+
+                <div class="section-line"></div>
 
                 <p>
-                    Walsall Aces Tennis Club is about
-                    more than simply playing tennis.
+                    A tennis club built around sport,
+                    community and opportunity.
                 </p>
 
-                <p>
-                    We're building a friendly environment
-                    where people can enjoy the game,
-                    improve their skills and connect
-                    with others.
-                </p>
+            </div>
 
-                <p>
-                    Whether you're new to tennis,
-                    returning to the game or an
-                    experienced player, you'll find
-                    a place at Walsall Aces.
-                </p>
+            <div class="about-grid">
+
+                <div class="about-logo">
+
+                    <img
+                        src="watc-logo.jpeg"
+                        alt="Walsall Aces Tennis Club"
+                    >
+
+                </div>
+
+                <div class="about-text">
+
+                    <div class="eyebrow">
+                        Our Club
+                    </div>
+
+                    <h3>
+                        A Club For The Community
+                    </h3>
+
+                    <p>
+                        Walsall Aces Tennis Club is about
+                        more than simply playing tennis.
+                    </p>
+
+                    <p>
+                        We're building a friendly environment
+                        where people can enjoy the game,
+                        improve their skills and connect
+                        with others.
+                    </p>
+
+                    <p>
+                        Whether you're new to tennis,
+                        returning to the game or an
+                        experienced player, you'll find
+                        a place at Walsall Aces.
+                    </p>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- =========================
+         CLUB FEATURES
+    ========================== -->
 
+    <section
+        class="features"
+        id="tennis"
+    >
 
-<!-- ==================================================
-     CLUB FEATURES
-     ================================================== -->
+        <div class="container">
 
-<section
-    class="features"
-    id="tennis"
->
+            <div class="section-heading">
 
-    <div class="container">
+                <div class="eyebrow">
+                    What's Happening?
+                </div>
 
-        <div class="section-heading">
+                <h2>
+                    Club Features
+                </h2>
+
+                <div class="section-line"></div>
+
+                <p>
+                    More information and features can
+                    be added as the club website develops.
+                </p>
+
+            </div>
+
+            <div class="feature-grid">
+
+                <!-- TENNIS -->
+
+                <div
+                    class="feature-card"
+                    id="tennis-card"
+                >
+
+                    <div class="feature-icon">
+                        🎾
+                    </div>
+
+                    <h3>
+                        Tennis
+                    </h3>
+
+                    <p>
+                        Sessions, playing opportunities
+                        and activities for all levels.
+                    </p>
+
+                </div>
+
+                <!-- MEMBERSHIP -->
+
+                <div
+                    class="feature-card"
+                    id="membership"
+                >
+
+                    <div class="feature-icon">
+                        👥
+                    </div>
+
+                    <h3>
+                        Membership
+                    </h3>
+
+                    <p>
+                        Join the club, membership options
+                        and what's included.
+                    </p>
+
+                </div>
+
+                <!-- EVENTS -->
+
+                <div
+                    class="feature-card"
+                    id="events"
+                >
+
+                    <div class="feature-icon">
+                        📅
+                    </div>
+
+                    <h3>
+                        Events
+                    </h3>
+
+                    <p>
+                        Tournaments, social sessions
+                        and club events.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         GALLERY
+    ========================== -->
+
+    <section
+        class="gallery"
+        id="gallery"
+    >
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    Our Gallery
+                </div>
+
+                <h2>
+                    Life At Walsall Aces
+                </h2>
+
+                <div class="section-line"></div>
+
+                <p>
+                    A snapshot of our club, our players
+                    and our community. Photographs courtesy
+                    of Mkuu Amani &amp; Przemyslaw Drabik
+                </p>
+
+            </div>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item large">
+
+                    <img
+                        src="https://static.wixstatic.com/media/4657a4_0ed4db30e72a42ec96d0c0968f1794cb~mv2.jpg"
+                        alt="Tennis at Walsall Aces"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>
+                            WATC Gallery
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://static.wixstatic.com/media/4657a4_e63b5023fc3041e58d0f4abb0089b415~mv2.jpg"
+                        alt="Walsall Aces Tennis Club"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>
+                            WATC Gallery
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://static.wixstatic.com/media/4657a4_cba2ac2ac43f41c5afed9798543f3013~mv2.jpg"
+                        alt="Tennis balls"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>
+                            WATC Gallery
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://static.wixstatic.com/media/4657a4_cafaf028cbe140ceb93178415603d9cd~mv2.jpg"
+                        alt="Walsall Aces players"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>
+                            WATC Gallery
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://static.wixstatic.com/media/4657a4_7187923612814bf79a0d27bf39ee9f9a~mv2.jpg"
+                        alt="Tennis court"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>
+                            WATC Gallery
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://static.wixstatic.com/media/4657a4_a855552b97134fbca05c9e79b3b5f440~mv2.jpeg"
+                        alt="Tennis racket"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>
+                            WATC Gallery
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://static.wixstatic.com/media/4657a4_5a878c3a378e4101966aadd5df364d5f~mv2.jpg"
+                        alt="Tennis net"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>
+                            WATC Gallery
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         CONTACT CTA
+    ========================== -->
+
+    <section
+        class="cta"
+        id="contact"
+    >
+
+        <div class="cta-content">
 
             <div class="eyebrow">
-                What's Happening?
+                Join The Club
             </div>
 
             <h2>
-                Club Features
+                Get In Touch
             </h2>
 
-            <div class="section-line"></div>
-
             <p>
-                More information and features can
-                be added as the club website develops.
+                Interested in Walsall Aces Tennis Club?
+                We'd love to hear from you.
             </p>
 
-        </div>
-
-
-        <div class="feature-grid">
-
-
-            <!-- TENNIS -->
-
-            <div
-                class="feature-card"
-                id="tennis-card"
+            <a
+                href="mailto:walsallaces@gmail.com"
+                class="button button-primary"
+                target="_blank"
+                rel="noopener"
             >
-
-                <div class="feature-icon">
-                    🎾
-                </div>
-
-                <h3>
-                    Tennis
-                </h3>
-
-                <p>
-                    Sessions, playing opportunities
-                    and activities for all levels.
-                </p>
-
-            </div>
-
-
-            <!-- MEMBERSHIP -->
-
-            <div
-                class="feature-card"
-                id="membership"
-            >
-
-                <div class="feature-icon">
-                    👥
-                </div>
-
-                <h3>
-                    Membership
-                </h3>
-
-                <p>
-                    Join the club, membership options
-                    and what's included.
-                </p>
-
-            </div>
-
-
-            <!-- EVENTS -->
-
-            <div
-                class="feature-card"
-                id="events"
-            >
-
-                <div class="feature-icon">
-                    📅
-                </div>
-
-                <h3>
-                    Events
-                </h3>
-
-                <p>
-                    Tournaments, social sessions
-                    and club events.
-                </p>
-
-            </div>
-
-
-            <!-- COACHING -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🎾
-                </div>
-
-                <h3>
-                    Coaching
-                </h3>
-
-                <p>
-                    Development, skills and support
-                    for players of all abilities.
-                </p>
-
-            </div>
-
+                ✉ &nbsp; Contact Us
+            </a>
 
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     GALLERY
-     ================================================== -->
-
-<section
-    class="gallery"
-    id="gallery"
->
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                Our Gallery
-            </div>
-
-            <h2>
-                Life At Walsall Aces
-            </h2>
-
-            <div class="section-line"></div>
-
-            <p>
-                A snapshot of our club,
-                our players and our community.
-                Photographs courtesy of Mkuu Amani &amp; Przemyslaw Drabik
-            </p>
-
-        </div>
-
-
-        <div class="gallery-grid">
-
-
-            <div class="gallery-item large">
-
-                <img
-                    src="https://static.wixstatic.com/media/4657a4_0ed4db30e72a42ec96d0c0968f1794cb~mv2.jpg"
-                    alt="Tennis at Walsall Aces"
-                >
-
-                <div class="gallery-overlay">
-                    <span>WATC Gallery</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://static.wixstatic.com/media/4657a4_e63b5023fc3041e58d0f4abb0089b415~mv2.jpg"
-                    alt="Walsall Aces Tennis Club"
-                >
-
-                <div class="gallery-overlay">
-                    <span>WATC Gallery</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://static.wixstatic.com/media/4657a4_cba2ac2ac43f41c5afed9798543f3013~mv2.jpg"
-                    alt="Tennis balls"
-                >
-
-                <div class="gallery-overlay">
-                    <span>WATC Gallery</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://static.wixstatic.com/media/4657a4_cafaf028cbe140ceb93178415603d9cd~mv2.jpg"
-                    alt="Walsall Aces players"
-                >
-
-                <div class="gallery-overlay">
-                    <span>WATC Gallery</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://static.wixstatic.com/media/4657a4_7187923612814bf79a0d27bf39ee9f9a~mv2.jpg"
-                    alt="Tennis court"
-                >
-
-                <div class="gallery-overlay">
-                    <span>WATC Gallery</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://static.wixstatic.com/media/4657a4_a855552b97134fbca05c9e79b3b5f440~mv2.jpeg"
-                    alt="Tennis racket"
-                >
-
-                <div class="gallery-overlay">
-                    <span>WATC Gallery</span>
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://static.wixstatic.com/media/4657a4_5a878c3a378e4101966aadd5df364d5f~mv2.jpg"
-                    alt="Tennis net"
-                >
-
-                <div class="gallery-overlay">
-                    <span>WATC Gallery</span>
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     CONTACT / CTA
-     ================================================== -->
-
-<section
-    class="cta"
-    id="contact"
->
-
-    <div class="cta-content">
-
-        <div class="eyebrow">
-            Join The Club
-        </div>
-
-        <h2>
-            Get In Touch
-        </h2>
-
-        <p>
-            Interested in Walsall Aces Tennis Club?
-            We'd love to hear from you.
-        </p>
-
-        <a
-            href="mailto:walsallaces@gmail.com"
-            class="button button-primary"
-            target="_blank"
-            rel="noopener"
-        >
-            ✉ &nbsp; Contact Us
-        </a>
-
-    </div>
-
-</section>
+    </section>
 
 </div>
-<!-- END HOME CONTENT -->
 
-
-<!-- ==================================================
-     MEMBERS PAGE
-     ================================================== -->
+<!-- =========================
+     MEMBERS AREA
+========================= -->
 
 <div id="members-page">
 
@@ -1572,10 +1336,9 @@ footer {
 
 </div>
 
-
-<!-- ==================================================
+<!-- =========================
      FOOTER
-     ================================================== -->
+========================= -->
 
 <footer>
 
@@ -1602,11 +1365,9 @@ footer {
 
         </div>
 
-
         <div class="footer-slogan">
             Tennis • Community • Opportunity
         </div>
-
 
         <div class="footer-social">
 
@@ -1635,14 +1396,11 @@ footer {
 
     </div>
 
-
-    <!-- ==================================================
-         PERSISTENT RADIO PLAYER
-         ================================================== -->
+    <!-- =========================
+         RADIO
+    ========================== -->
 
     <div class="footer-radio">
-
-        <!-- DESKTOP RADIOKING PLAYER -->
 
         <div class="footer-radio-label">
             Listen Live — Prodigal Sun Radio
@@ -1656,10 +1414,7 @@ footer {
             title="Prodigal Sun Radio player">
         </iframe>
 
-
-        <!-- ==================================================
-             MOBILE PLAYER
-             ================================================== -->
+        <!-- MOBILE RADIO -->
 
         <div
             class="mobile-radio"
@@ -1690,9 +1445,7 @@ footer {
                             id="mobileRadioDot"
                         ></span>
 
-                        <span
-                            id="mobileRadioStatus"
-                        >
+                        <span id="mobileRadioStatus">
                             Tap to play
                         </span>
 
@@ -1701,14 +1454,6 @@ footer {
                 </div>
 
             </div>
-
-
-            <!--
-                 DIRECT RADIOKING STREAM
-
-                 This is the actual audio stream.
-                 It does NOT open the RadioKing website.
-            -->
 
             <audio
                 id="mobileAudio"
@@ -1719,9 +1464,6 @@ footer {
 
         </div>
 
-
-        <!-- RadioKing desktop script remains unchanged -->
-
         <script
             type="text/javascript"
             src="https://player.radioking.io/scripts/iframe.bundle.js">
@@ -1729,22 +1471,15 @@ footer {
 
     </div>
 
-
-    <!-- COPYRIGHT -->
-
     <div class="copyright">
-
-        © 2026 Walsall Aces Tennis Club.
-        All rights reserved.
-
+        © 2026 Walsall Aces Tennis Club. All rights reserved.
     </div>
 
 </footer>
 
-
-<!-- ==================================================
-     PAGE NAVIGATION SCRIPT
-     ================================================== -->
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
@@ -1767,9 +1502,9 @@ const brand =
     document.getElementById("homeBrand");
 
 
-/* =====================================================
-   SHOW HOME
-   ===================================================== */
+/* =========================
+   HOME / MEMBERS NAVIGATION
+========================= */
 
 function showHome(scrollTarget = null) {
 
@@ -1777,16 +1512,9 @@ function showHome(scrollTarget = null) {
 
     membersPage.style.display = "none";
 
-    /*
-       Do not reload the iframe.
-       We simply hide it.
-    */
-
-    document
-        .querySelectorAll("nav a")
-        .forEach(function(link) {
-            link.classList.remove("active");
-        });
+    document.querySelectorAll("nav a").forEach(function(link) {
+        link.classList.remove("active");
+    });
 
     document
         .querySelector('[data-home-link]')
@@ -1818,37 +1546,16 @@ function showHome(scrollTarget = null) {
         });
 
     }
-
 }
 
 
-/* =====================================================
-   SHOW MEMBERS
-   ===================================================== */
-
 function showMembers() {
-
-    /*
-       Hide only the home content.
-
-       Header, footer and — most importantly —
-       the RadioKing iframe remain alive.
-    */
 
     homeContent.style.display = "none";
 
     membersPage.style.display = "block";
 
-    /*
-       Load Members only the first time.
-
-       Once loaded, the iframe remains in memory
-       when we return to Home.
-    */
-
-    if (
-        !membersFrame.dataset.loaded
-    ) {
+    if (!membersFrame.dataset.loaded) {
 
         membersFrame.src = "members.html";
 
@@ -1856,11 +1563,9 @@ function showMembers() {
 
     }
 
-    document
-        .querySelectorAll("nav a")
-        .forEach(function(link) {
-            link.classList.remove("active");
-        });
+    document.querySelectorAll("nav a").forEach(function(link) {
+        link.classList.remove("active");
+    });
 
     membershipLink.classList.add("active");
 
@@ -1871,10 +1576,6 @@ function showMembers() {
 
 }
 
-
-/* =====================================================
-   MEMBERSHIP NAVIGATION
-   ===================================================== */
 
 membershipLink.addEventListener(
     "click",
@@ -1887,10 +1588,6 @@ membershipLink.addEventListener(
     }
 );
 
-
-/* =====================================================
-   HOME NAVIGATION
-   ===================================================== */
 
 homeLinks.forEach(function(link) {
 
@@ -1908,10 +1605,6 @@ homeLinks.forEach(function(link) {
 });
 
 
-/* =====================================================
-   BRAND → HOME
-   ===================================================== */
-
 brand.addEventListener(
     "click",
     function(event) {
@@ -1923,10 +1616,6 @@ brand.addEventListener(
     }
 );
 
-
-/* =====================================================
-   HOME SECTION LINKS
-   ===================================================== */
 
 document
     .querySelectorAll(
@@ -1942,7 +1631,7 @@ document
 
                 const targetId =
                     link.getAttribute("href")
-                    .replace("#", "");
+                        .replace("#","");
 
                 showHome(targetId);
 
@@ -1951,10 +1640,6 @@ document
 
     });
 
-
-/* =====================================================
-   HERO BUTTONS / INTERNAL LINKS
-   ===================================================== */
 
 document
     .querySelectorAll(
@@ -1970,7 +1655,7 @@ document
 
                 const targetId =
                     link.getAttribute("href")
-                    .replace("#", "");
+                        .replace("#","");
 
                 showHome(targetId);
 
@@ -1980,23 +1665,13 @@ document
     });
 
 
-/* =====================================================
-   LISTEN FOR "BACK TO MAIN SITE" FROM MEMBERS PAGE
-   ===================================================== */
+/* =========================
+   MEMBERS PAGE RETURN
+========================= */
 
 window.addEventListener(
     "message",
     function(event) {
-
-        /*
-           Members page can send:
-
-           {
-               type: "watc-home"
-           }
-
-           to return to the homepage.
-        */
 
         if (
             event.data &&
@@ -2011,9 +1686,9 @@ window.addEventListener(
 );
 
 
-/* =====================================================
-   MOBILE RADIO PLAYER
-   ===================================================== */
+/* =========================
+   MOBILE RADIO
+========================= */
 
 const mobileAudio =
     document.getElementById("mobileAudio");
@@ -2027,10 +1702,6 @@ const mobileRadio =
 const mobileRadioStatus =
     document.getElementById("mobileRadioStatus");
 
-
-/* =====================================================
-   UPDATE MOBILE PLAYER DISPLAY
-   ===================================================== */
 
 function updateMobileRadio() {
 
@@ -2063,17 +1734,9 @@ function updateMobileRadio() {
 }
 
 
-/* =====================================================
-   PLAY / PAUSE
-   ===================================================== */
-
 mobilePlayButton.addEventListener(
     "click",
     async function() {
-
-        /*
-           If the stream isn't playing, start it.
-        */
 
         if (mobileAudio.paused) {
 
@@ -2086,7 +1749,8 @@ mobilePlayButton.addEventListener(
 
                 mobileRadio.classList.add("playing");
 
-                mobilePlayButton.textContent = "❚❚";
+                mobilePlayButton.textContent =
+                    "❚❚";
 
                 mobilePlayButton.setAttribute(
                     "aria-label",
@@ -2114,13 +1778,10 @@ mobilePlayButton.addEventListener(
 
         } else {
 
-            /*
-               Stop playback.
-            */
-
             mobileAudio.pause();
 
-            mobilePlayButton.textContent = "▶";
+            mobilePlayButton.textContent =
+                "▶";
 
             mobilePlayButton.setAttribute(
                 "aria-label",
@@ -2140,17 +1801,14 @@ mobilePlayButton.addEventListener(
 );
 
 
-/* =====================================================
-   STREAM STARTED
-   ===================================================== */
-
 mobileAudio.addEventListener(
     "playing",
     function() {
 
         mobileRadio.classList.add("playing");
 
-        mobilePlayButton.textContent = "❚❚";
+        mobilePlayButton.textContent =
+            "❚❚";
 
         mobilePlayButton.setAttribute(
             "aria-label",
@@ -2163,10 +1821,6 @@ mobileAudio.addEventListener(
     }
 );
 
-
-/* =====================================================
-   STREAM PAUSED
-   ===================================================== */
 
 mobileAudio.addEventListener(
     "pause",
@@ -2195,10 +1849,6 @@ mobileAudio.addEventListener(
 );
 
 
-/* =====================================================
-   STREAM ERROR
-   ===================================================== */
-
 mobileAudio.addEventListener(
     "error",
     function() {
@@ -2222,10 +1872,6 @@ mobileAudio.addEventListener(
 );
 
 
-/* =====================================================
-   STREAM BUFFERING
-   ===================================================== */
-
 mobileAudio.addEventListener(
     "waiting",
     function() {
@@ -2236,10 +1882,6 @@ mobileAudio.addEventListener(
     }
 );
 
-
-/* =====================================================
-   STREAM READY
-   ===================================================== */
 
 mobileAudio.addEventListener(
     "canplay",
@@ -2256,7 +1898,6 @@ mobileAudio.addEventListener(
 );
 
 </script>
-
 
 </body>
 </html>

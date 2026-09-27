@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
+
 <title>Walsall Aces Tennis Club</title>
+
 <meta name="description"
       content="Walsall Aces Tennis Club — Tennis, community and opportunity for players of all abilities.">
 
@@ -13,6 +15,7 @@
 /* =====================================================
    COLOURS
    ===================================================== */
+
 :root {
     --navy: #071b3a;
     --navy-dark: #041329;
@@ -28,6 +31,7 @@
 /* =====================================================
    RESET
    ===================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -46,6 +50,12 @@ body {
     background: var(--white);
     color: var(--text);
     line-height: 1.6;
+
+    /*
+       Leave room for the persistent radio player
+       at the bottom of the screen.
+    */
+    padding-bottom: 175px;
 }
 
 img {
@@ -61,6 +71,7 @@ a {
 /* =====================================================
    HEADER
    ===================================================== */
+
 header {
     position: sticky;
     top: 0;
@@ -83,18 +94,13 @@ header {
 }
 
 /* BRAND */
+
 .brand {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-/*
-   The original logo is square.
-   border-radius: 50% makes the outer square
-   background disappear and leaves the circular
-   badge visible.
-*/
 .brand-logo {
     width: 72px;
     height: 72px;
@@ -117,7 +123,10 @@ header {
     margin-top: 5px;
 }
 
-/* NAVIGATION */
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
 nav {
     display: flex;
     align-items: center;
@@ -138,6 +147,7 @@ nav a:hover {
 }
 
 /* ACTIVE NAV */
+
 nav a.active {
     color: var(--green);
 }
@@ -155,6 +165,7 @@ nav a.active::after {
 /* =====================================================
    HERO
    ===================================================== */
+
 .hero {
     min-height: 600px;
     position: relative;
@@ -220,6 +231,7 @@ nav a.active::after {
 /* =====================================================
    BUTTONS
    ===================================================== */
+
 .button {
     display: inline-block;
     padding:
@@ -254,6 +266,7 @@ nav a.active::after {
 /* =====================================================
    GENERAL SECTIONS
    ===================================================== */
+
 section {
     padding:
         80px 20px;
@@ -303,6 +316,7 @@ section {
 /* =====================================================
    ABOUT
    ===================================================== */
+
 .about {
     background: var(--white);
 }
@@ -355,6 +369,7 @@ section {
 /* =====================================================
    FEATURES
    ===================================================== */
+
 .features {
     background: var(--light);
 }
@@ -415,6 +430,7 @@ section {
 /* =====================================================
    GALLERY
    ===================================================== */
+
 .gallery {
     background: var(--white);
 }
@@ -483,6 +499,7 @@ section {
 /* =====================================================
    CTA
    ===================================================== */
+
 .cta {
     position: relative;
     background: var(--navy);
@@ -538,8 +555,28 @@ section {
 }
 
 /* =====================================================
+   MEMBERS PAGE CONTAINER
+   ===================================================== */
+
+#members-page {
+    display: none;
+    min-height: calc(100vh - 100px);
+    background: var(--white);
+}
+
+#members-frame {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 100px);
+    min-height: 900px;
+    border: 0;
+    background: var(--white);
+}
+
+/* =====================================================
    FOOTER
    ===================================================== */
+
 footer {
     background: var(--navy-dark);
     color: #cbd4df;
@@ -611,65 +648,110 @@ footer {
 }
 
 /* =====================================================
-   FOOTER RADIO PLAYER
+   PERSISTENT RADIO PLAYER
    ===================================================== */
+
+/*
+   The player is now fixed to the browser window.
+
+   It is NOT part of the page navigation.
+   Therefore it stays loaded when Members is opened.
+*/
+
 .footer-radio {
-    max-width: 1100px;
-    margin: 30px auto 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 5000;
+
+    margin: 0;
     padding:
-        28px 20px 30px;
+        12px 20px 14px;
+
     text-align: center;
+
+    background:
+        rgba(4,19,41,0.98);
+
     border-top:
-        1px solid rgba(255,255,255,0.08);
-    border-bottom:
-        1px solid rgba(255,255,255,0.08);
+        2px solid
+        rgba(114,189,50,0.35);
+
+    box-shadow:
+        0 -8px 30px
+        rgba(0,0,0,0.30);
+
+    backdrop-filter: blur(12px);
 }
 
 .footer-radio-label {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    margin-bottom: 12px;
+
+    margin-bottom: 8px;
+
     padding:
-        6px 13px;
+        5px 12px;
+
     border-radius: 999px;
+
     background:
         rgba(114,189,50,0.12);
+
     border:
-        1px solid rgba(114,189,50,0.3);
+        1px solid
+        rgba(114,189,50,0.3);
+
     color: var(--white);
-    font-size: 0.72rem;
+
+    font-size: 0.68rem;
     font-weight: 800;
-    letter-spacing: 1.7px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
 .footer-radio-label::before {
     content: "";
-    width: 8px;
-    height: 8px;
+
+    width: 7px;
+    height: 7px;
+
     flex-shrink: 0;
+
     border-radius: 50%;
+
     background: var(--green);
+
     box-shadow:
-        0 0 10px rgba(114,189,50,0.9);
+        0 0 10px
+        rgba(114,189,50,0.9);
 }
 
 .footer-radio-player {
     display: block;
+
     width: 470px;
     max-width: 100%;
+
     height: 145px;
+
     margin: 0 auto;
+
     border: 0;
     border-radius: 5px;
+
     box-shadow:
-        0 12px 30px rgba(0,0,0,0.3);
+        0 8px 25px
+        rgba(0,0,0,0.3);
 }
 
 /* =====================================================
    COPYRIGHT
    ===================================================== */
+
 .copyright {
     text-align: center;
     margin-top: 25px;
@@ -681,6 +763,7 @@ footer {
 /* =====================================================
    MOBILE
    ===================================================== */
+
 @media (max-width: 900px) {
 
     .header-inner {
@@ -729,6 +812,10 @@ footer {
 }
 
 @media (max-width: 600px) {
+
+    body {
+        padding-bottom: 165px;
+    }
 
     .brand-text {
         font-size: 1rem;
@@ -795,14 +882,25 @@ footer {
     }
 
     /* RADIO PLAYER MOBILE */
+
     .footer-radio {
         padding:
-            25px 0 28px;
+            8px 5px 10px;
+    }
+
+    .footer-radio-label {
+        margin-bottom: 5px;
+        font-size: 0.60rem;
     }
 
     .footer-radio-player {
         width: 100%;
         height: 145px;
+    }
+
+    #members-frame {
+        height: calc(100vh - 150px);
+        min-height: 850px;
     }
 
 }
@@ -820,7 +918,11 @@ footer {
 
     <div class="header-inner">
 
-        <a href="#" class="brand">
+        <a
+            href="#"
+            class="brand"
+            id="homeBrand"
+        >
 
             <img
                 src="watc-logo.jpeg"
@@ -842,7 +944,11 @@ footer {
 
         <nav>
 
-            <a href="#" class="active">
+            <a
+                href="#"
+                class="active"
+                data-home-link
+            >
                 Home
             </a>
 
@@ -854,7 +960,10 @@ footer {
                 Tennis
             </a>
 
-            <a href="members.html">
+            <a
+                href="members.html"
+                id="membershipLink"
+            >
                 Membership
             </a>
 
@@ -875,6 +984,13 @@ footer {
     </div>
 
 </header>
+
+
+<!-- ==================================================
+     HOME PAGE CONTENT
+     ================================================== -->
+
+<div id="home-content">
 
 
 <!-- ==================================================
@@ -1046,7 +1162,7 @@ footer {
 
             <div
                 class="feature-card"
-                id="tennis"
+                id="tennis-card"
             >
 
                 <div class="feature-icon">
@@ -1313,15 +1429,31 @@ footer {
 
 </section>
 
+</div>
+<!-- END HOME CONTENT -->
+
+
+<!-- ==================================================
+     MEMBERS PAGE
+     ================================================== -->
+
+<div id="members-page">
+
+    <iframe
+        id="members-frame"
+        src="about:blank"
+        title="Walsall Aces Tennis Club Members Area"
+        loading="eager">
+    </iframe>
+
+</div>
+
 
 <!-- ==================================================
      FOOTER
      ================================================== -->
 
 <footer>
-
-
-    <!-- FOOTER BRAND / SOCIAL -->
 
     <div class="footer-inner">
 
@@ -1381,7 +1513,7 @@ footer {
 
 
     <!-- ==================================================
-         RADIO PLAYER
+         PERSISTENT RADIO PLAYER
          ================================================== -->
 
     <div class="footer-radio">
@@ -1415,8 +1547,279 @@ footer {
 
     </div>
 
-
 </footer>
+
+
+<!-- ==================================================
+     PAGE NAVIGATION SCRIPT
+     ================================================== -->
+
+<script>
+
+const homeContent =
+    document.getElementById("home-content");
+
+const membersPage =
+    document.getElementById("members-page");
+
+const membersFrame =
+    document.getElementById("members-frame");
+
+const membershipLink =
+    document.getElementById("membershipLink");
+
+const homeLinks =
+    document.querySelectorAll("[data-home-link]");
+
+const brand =
+    document.getElementById("homeBrand");
+
+
+/* =====================================================
+   SHOW HOME
+   ===================================================== */
+
+function showHome(scrollTarget = null) {
+
+    homeContent.style.display = "block";
+
+    membersPage.style.display = "none";
+
+    /*
+       Do not reload the iframe.
+       We simply hide it.
+    */
+
+    document
+        .querySelectorAll("nav a")
+        .forEach(function(link) {
+            link.classList.remove("active");
+        });
+
+    document
+        .querySelector('[data-home-link]')
+        .classList.add("active");
+
+    if (scrollTarget) {
+
+        setTimeout(function() {
+
+            const target =
+                document.getElementById(scrollTarget);
+
+            if (target) {
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }, 50);
+
+    } else {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW MEMBERS
+   ===================================================== */
+
+function showMembers() {
+
+    /*
+       Hide only the home content.
+
+       Header, footer and — most importantly —
+       the RadioKing iframe remain alive.
+    */
+
+    homeContent.style.display = "none";
+
+    membersPage.style.display = "block";
+
+    /*
+       Load Members only the first time.
+
+       Once loaded, the iframe remains in memory
+       when we return to Home.
+    */
+
+    if (
+        !membersFrame.dataset.loaded
+    ) {
+
+        membersFrame.src = "members.html";
+
+        membersFrame.dataset.loaded = "true";
+
+    }
+
+    document
+        .querySelectorAll("nav a")
+        .forEach(function(link) {
+            link.classList.remove("active");
+        });
+
+    membershipLink.classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
+}
+
+
+/* =====================================================
+   MEMBERSHIP NAVIGATION
+   ===================================================== */
+
+membershipLink.addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+        showMembers();
+
+    }
+);
+
+
+/* =====================================================
+   HOME NAVIGATION
+   ===================================================== */
+
+homeLinks.forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            showHome();
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   BRAND → HOME
+   ===================================================== */
+
+brand.addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+        showHome();
+
+    }
+);
+
+
+/* =====================================================
+   HOME SECTION LINKS
+   ===================================================== */
+
+document
+    .querySelectorAll(
+        'nav a[href^="#"]:not([data-home-link])'
+    )
+    .forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const targetId =
+                    link.getAttribute("href")
+                    .replace("#", "");
+
+                showHome(targetId);
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   HERO BUTTONS / INTERNAL LINKS
+   ===================================================== */
+
+document
+    .querySelectorAll(
+        '#home-content a[href^="#"]'
+    )
+    .forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const targetId =
+                    link.getAttribute("href")
+                    .replace("#", "");
+
+                showHome(targetId);
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   LISTEN FOR "BACK TO MAIN SITE" FROM MEMBERS PAGE
+   ===================================================== */
+
+window.addEventListener(
+    "message",
+    function(event) {
+
+        /*
+           Members page can send:
+
+           {
+               type: "watc-home"
+           }
+
+           to return to the homepage.
+        */
+
+        if (
+            event.data &&
+            event.data.type === "watc-home"
+        ) {
+
+            showHome();
+
+        }
+
+    }
+);
+
+</script>
+
 
 </body>
 </html>

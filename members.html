@@ -1724,6 +1724,16 @@ const SCRIPT_URL =
 
 
 /* =========================
+   CLUB LOGO
+========================= */
+
+const CLUB_LOGO_URL =
+    "https://static.wixstatic.com/media/4657a4_42f561131cc4423b90f1dcbfe8701696~mv2.jpeg";
+
+let clubLogoDataUrl = "";
+
+
+/* =========================
    ELEMENTS
 ========================= */
 
@@ -2038,6 +2048,116 @@ membershipForm.addEventListener(
 
 
 /* =========================
+   PREPARE CLUB LOGO
+========================= */
+
+async function prepareClubLogo() {
+
+    /*
+     * If we have already converted the logo,
+     * use the cached version.
+     */
+
+    if (clubLogoDataUrl) {
+
+        return clubLogoDataUrl;
+
+    }
+
+
+    try {
+
+        /*
+         * Fetch the logo from Wix.
+         */
+
+        const response =
+            await fetch(
+                CLUB_LOGO_URL
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Logo could not be loaded."
+            );
+
+        }
+
+
+        /*
+         * Convert the downloaded image
+         * into a Blob.
+         */
+
+        const blob =
+            await response.blob();
+
+
+        /*
+         * Convert the Blob into a data URL.
+         *
+         * This embeds the actual logo inside
+         * the downloaded SVG membership card.
+         */
+
+        return await new Promise(
+            function(resolve, reject) {
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onloadend =
+                    function() {
+
+                        clubLogoDataUrl =
+                            reader.result;
+
+                        resolve(
+                            clubLogoDataUrl
+                        );
+
+                    };
+
+
+                reader.onerror =
+                    function(error) {
+
+                        reject(error);
+
+                    };
+
+
+                reader.readAsDataURL(
+                    blob
+                );
+
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Could not prepare club logo:",
+            error
+        );
+
+
+        /*
+         * Return an empty string if the logo
+         * cannot be prepared.
+         */
+
+        return "";
+
+    }
+
+}
+
+
+/* =========================
    DOWNLOAD DIGITAL CARD
 ========================= */
 
@@ -2047,7 +2167,7 @@ downloadCardButton.addEventListener(
 );
 
 
-function downloadMembershipCard() {
+async function downloadMembershipCard() {
 
 
     const memberName =
@@ -2078,6 +2198,15 @@ function downloadMembershipCard() {
 
 
     /*
+     * Prepare the logo before creating
+     * the SVG.
+     */
+
+    const logoDataUrl =
+        await prepareClubLogo();
+
+
+    /*
      * Create an SVG membership card.
      *
      * SVG is used because it remains sharp when
@@ -2088,7 +2217,6 @@ function downloadMembershipCard() {
 `
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
     width="1200"
     height="700"
     viewBox="0 0 1200 700">
@@ -2163,16 +2291,21 @@ function downloadMembershipCard() {
         opacity="0.04"/>
 
 
-    <!-- Logo -->
+    <!-- Embedded Logo -->
 
+    ${
+        logoDataUrl
+        ? `
     <image
-    xlink:href="https://static.wixstatic.com/media/4657a4_42f561131cc4423b90f1dcbfe8701696~mv2.jpeg"
-    href="https://static.wixstatic.com/media/4657a4_42f561131cc4423b90f1dcbfe8701696~mv2.jpeg"
-    x="75"
-    y="75"
-    width="125"
-    height="125"
-    preserveAspectRatio="xMidYMid meet"/>
+        href="${logoDataUrl}"
+        x="75"
+        y="75"
+        width="125"
+        height="125"
+        preserveAspectRatio="xMidYMid meet"/>
+        `
+        : ""
+    }
 
 
     <!-- Club name -->
@@ -2527,6 +2660,17 @@ function clearMembershipForm() {
 
     submitButton.textContent =
         "Submit Membership Details";
+
+
+    /*
+     * Restore download button
+     */
+
+    downloadCardButton.disabled =
+        false;
+
+    downloadCardButton.textContent =
+        "Download Digital Membership Card";
 
 
     /*

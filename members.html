@@ -355,21 +355,42 @@ body {
 ========================= */
 
 .calendar-wrapper {
+    width: 100%;
+
+    max-width: 100%;
+
     overflow: hidden;
 
     border-radius: 12px;
 
     border: 1px solid var(--border);
+
+    background: white;
 }
 
-.calendar-wrapper iframe {
+.calendar-frame {
     display: block;
 
     width: 100%;
 
-    min-height: 650px;
+    height: 650px;
 
     border: 0;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+/*
+ * Mobile calendar is hidden by default.
+ * Desktop calendar remains the normal
+ * month-style Google Calendar.
+ */
+
+.calendar-mobile {
+    display: none;
 }
 
 
@@ -940,9 +961,45 @@ footer a {
         grid-column: auto;
     }
 
-    .calendar-wrapper iframe {
-        min-height: 600px;
+
+    /* =========================
+       MOBILE CALENDAR
+    ========================= */
+
+    .calendar-desktop {
+        display: none;
     }
+
+    .calendar-mobile {
+        display: block;
+    }
+
+    .calendar-wrapper {
+        width: 100%;
+
+        max-width: 100%;
+
+        overflow: hidden;
+
+        border-radius: 10px;
+    }
+
+    .calendar-frame {
+        width: 100%;
+
+        height: 680px;
+
+        min-height: 680px;
+
+        display: block;
+
+        border: 0;
+
+        margin: 0;
+
+        padding: 0;
+    }
+
 
     .digital-card {
         padding: 22px;
@@ -962,6 +1019,44 @@ footer a {
 
     .digital-card-name {
         font-size: 28px;
+    }
+
+}
+
+
+/* =========================
+   SMALLER PHONES
+========================= */
+
+@media (max-width: 420px) {
+
+    .container {
+        width: calc(100% - 20px);
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    .calendar-frame {
+        height: 650px;
+
+        min-height: 650px;
+    }
+
+}
+
+
+/* =========================
+   LANDSCAPE PHONES
+========================= */
+
+@media (max-width: 900px) and (orientation: landscape) and (pointer: coarse) {
+
+    .calendar-frame {
+        height: 600px;
+
+        min-height: 600px;
     }
 
 }
@@ -1109,12 +1204,32 @@ footer a {
 
                 <div class="calendar-wrapper">
 
+
+                    <!-- =========================
+                         DESKTOP CALENDAR
+                    ========================= -->
+
                     <iframe
+                        class="calendar-frame calendar-desktop"
                         src="https://calendar.google.com/calendar/embed?src=walsallaces%40gmail.com&ctz=Europe%2FLondon"
                         frameborder="0"
                         scrolling="no"
                         title="Walsall Aces Tennis Club Calendar">
                     </iframe>
+
+
+                    <!-- =========================
+                         MOBILE AGENDA CALENDAR
+                    ========================= -->
+
+                    <iframe
+                        class="calendar-frame calendar-mobile"
+                        src="https://calendar.google.com/calendar/embed?src=walsallaces%40gmail.com&ctz=Europe%2FLondon&mode=AGENDA"
+                        frameborder="0"
+                        scrolling="no"
+                        title="Walsall Aces Tennis Club Mobile Schedule">
+                    </iframe>
+
 
                 </div>
 
@@ -1802,8 +1917,6 @@ function showMembersPage() {
 }
 
 
-/* Check existing session */
-
 if (sessionStorage.getItem(SESSION_KEY) === "true") {
 
     showMembersPage();
@@ -1811,15 +1924,11 @@ if (sessionStorage.getItem(SESSION_KEY) === "true") {
 }
 
 
-/* Password button */
-
 passwordButton.addEventListener(
     "click",
     checkPassword
 );
 
-
-/* Allow Enter key */
 
 memberPassword.addEventListener(
     "keydown",
@@ -1868,11 +1977,6 @@ photoConsent.addEventListener(
     "change",
     function() {
 
-        /*
-         * When checked, disable the hidden "No"
-         * fallback so only "Yes" is submitted.
-         */
-
         photoConsentFallback.disabled =
             photoConsent.checked;
 
@@ -1890,10 +1994,6 @@ membershipForm.addEventListener(
 
         event.preventDefault();
 
-
-        /*
-         * Browser validation
-         */
 
         if (!membershipForm.checkValidity()) {
 
@@ -1949,10 +2049,6 @@ membershipForm.addEventListener(
             if (result.result === "success") {
 
 
-                /*
-                 * Populate the digital membership card
-                 */
-
                 cardMemberName.textContent =
                     result.memberName || "";
 
@@ -1966,10 +2062,6 @@ membershipForm.addEventListener(
                     result.status || "Active";
 
 
-                /*
-                 * Show confirmation
-                 */
-
                 formStatus.textContent =
                     "Membership created successfully. Your digital membership card is ready below.";
 
@@ -1977,28 +2069,15 @@ membershipForm.addEventListener(
                     "form-status success";
 
 
-                /*
-                 * Show card area
-                 */
-
                 membershipResult.style.display =
                     "block";
 
-
-                /*
-                 * Prevent another submission while
-                 * the card is waiting to be downloaded.
-                 */
 
                 submitButton.disabled = true;
 
                 submitButton.textContent =
                     "Membership Created";
 
-
-                /*
-                 * Bring the membership card into view
-                 */
 
                 setTimeout(
                     function() {
@@ -2053,11 +2132,6 @@ membershipForm.addEventListener(
 
 async function prepareClubLogo() {
 
-    /*
-     * If we have already converted the logo,
-     * use the cached version.
-     */
-
     if (clubLogoDataUrl) {
 
         return clubLogoDataUrl;
@@ -2066,10 +2140,6 @@ async function prepareClubLogo() {
 
 
     try {
-
-        /*
-         * Fetch the logo from Wix.
-         */
 
         const response =
             await fetch(
@@ -2086,21 +2156,9 @@ async function prepareClubLogo() {
         }
 
 
-        /*
-         * Convert the downloaded image
-         * into a Blob.
-         */
-
         const blob =
             await response.blob();
 
-
-        /*
-         * Convert the Blob into a data URL.
-         *
-         * This embeds the actual logo inside
-         * the downloaded SVG membership card.
-         */
 
         return await new Promise(
             function(resolve, reject) {
@@ -2143,12 +2201,6 @@ async function prepareClubLogo() {
             "Could not prepare club logo:",
             error
         );
-
-
-        /*
-         * Return an empty string if the logo
-         * cannot be prepared.
-         */
 
         return "";
 
@@ -2197,21 +2249,9 @@ async function downloadMembershipCard() {
         "Preparing Membership Card...";
 
 
-    /*
-     * Prepare the logo before creating
-     * the SVG.
-     */
-
     const logoDataUrl =
         await prepareClubLogo();
 
-
-    /*
-     * Create an SVG membership card.
-     *
-     * SVG is used because it remains sharp when
-     * viewed or printed at different sizes.
-     */
 
     const svg =
 `
@@ -2262,8 +2302,6 @@ async function downloadMembershipCard() {
     </defs>
 
 
-    <!-- Card -->
-
     <rect
         x="20"
         y="20"
@@ -2273,8 +2311,6 @@ async function downloadMembershipCard() {
         fill="url(#background)"
         filter="url(#shadow)"/>
 
-
-    <!-- Decorative circles -->
 
     <circle
         cx="1050"
@@ -2291,13 +2327,12 @@ async function downloadMembershipCard() {
         opacity="0.04"/>
 
 
-    <!-- Embedded Logo -->
-
     ${
         logoDataUrl
         ? `
     <image
         href="${logoDataUrl}"
+        xlink:href="${logoDataUrl}"
         x="75"
         y="75"
         width="125"
@@ -2307,8 +2342,6 @@ async function downloadMembershipCard() {
         : ""
     }
 
-
-    <!-- Club name -->
 
     <text
         x="225"
@@ -2323,8 +2356,6 @@ async function downloadMembershipCard() {
     </text>
 
 
-    <!-- Card title -->
-
     <text
         x="225"
         y="155"
@@ -2338,8 +2369,6 @@ async function downloadMembershipCard() {
 
     </text>
 
-
-    <!-- Active badge -->
 
     <rect
         x="940"
@@ -2363,8 +2392,6 @@ async function downloadMembershipCard() {
     </text>
 
 
-    <!-- Member name -->
-
     <text
         x="75"
         y="315"
@@ -2378,8 +2405,6 @@ async function downloadMembershipCard() {
     </text>
 
 
-    <!-- Divider -->
-
     <line
         x1="75"
         y1="365"
@@ -2389,8 +2414,6 @@ async function downloadMembershipCard() {
         stroke-opacity="0.18"
         stroke-width="2"/>
 
-
-    <!-- Membership type label -->
 
     <text
         x="75"
@@ -2406,8 +2429,6 @@ async function downloadMembershipCard() {
     </text>
 
 
-    <!-- Membership type -->
-
     <text
         x="75"
         y="455"
@@ -2420,8 +2441,6 @@ async function downloadMembershipCard() {
 
     </text>
 
-
-    <!-- Membership number label -->
 
     <text
         x="445"
@@ -2437,8 +2456,6 @@ async function downloadMembershipCard() {
     </text>
 
 
-    <!-- Membership number -->
-
     <text
         x="445"
         y="455"
@@ -2451,8 +2468,6 @@ async function downloadMembershipCard() {
 
     </text>
 
-
-    <!-- Status label -->
 
     <text
         x="875"
@@ -2468,8 +2483,6 @@ async function downloadMembershipCard() {
     </text>
 
 
-    <!-- Status -->
-
     <text
         x="875"
         y="455"
@@ -2482,8 +2495,6 @@ async function downloadMembershipCard() {
 
     </text>
 
-
-    <!-- Footer -->
 
     <line
         x1="75"
@@ -2526,10 +2537,6 @@ async function downloadMembershipCard() {
 `;
 
 
-    /*
-     * Create downloadable SVG file
-     */
-
     const blob =
         new Blob(
             [svg],
@@ -2561,17 +2568,10 @@ async function downloadMembershipCard() {
 
     document.body.appendChild(link);
 
-
     link.click();
-
 
     document.body.removeChild(link);
 
-
-    /*
-     * Give the browser a moment to initiate
-     * the download before clearing the form.
-     */
 
     setTimeout(
         function() {
@@ -2607,25 +2607,13 @@ function clearMembershipForm() {
     membershipForm.reset();
 
 
-    /*
-     * Restore hidden photo-consent fallback
-     */
-
     photoConsentFallback.disabled =
         false;
 
 
-    /*
-     * Hide membership result
-     */
-
     membershipResult.style.display =
         "none";
 
-
-    /*
-     * Clear card information
-     */
 
     cardMemberName.textContent =
         "";
@@ -2640,20 +2628,12 @@ function clearMembershipForm() {
         "";
 
 
-    /*
-     * Reset status message
-     */
-
     formStatus.textContent =
         "";
 
     formStatus.className =
         "form-status";
 
-
-    /*
-     * Restore submit button
-     */
 
     submitButton.disabled =
         false;
@@ -2662,20 +2642,12 @@ function clearMembershipForm() {
         "Submit Membership Details";
 
 
-    /*
-     * Restore download button
-     */
-
     downloadCardButton.disabled =
         false;
 
     downloadCardButton.textContent =
         "Download Digital Membership Card";
 
-
-    /*
-     * Return user to membership form
-     */
 
     document.getElementById("membership")
         .scrollIntoView({

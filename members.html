@@ -383,6 +383,58 @@ body {
 }
 
 
+/* CALENDAR REFRESH BUTTON */
+
+.calendar-refresh-row {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 15px;
+}
+
+.calendar-refresh-button {
+    border: 0;
+
+    border-radius: 10px;
+
+    padding: 11px 18px;
+
+    background: var(--navy);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.calendar-refresh-button:hover {
+    background: var(--navy-light);
+
+    transform: translateY(-1px);
+}
+
+.calendar-refresh-button:active {
+    transform: translateY(0);
+}
+
+.calendar-refresh-button.refreshing {
+    opacity: 0.65;
+
+    cursor: wait;
+}
+
+
 /* =========================
    FORM
 ========================= */
@@ -1001,6 +1053,7 @@ footer a {
 
 <div id="passwordGate">
     <div class="password-box">
+
         <img
             class="password-logo"
             src="https://static.wixstatic.com/media/4657a4_42f561131cc4423b90f1dcbfe8701696~mv2.jpeg"
@@ -1023,7 +1076,9 @@ footer a {
             type="button"
             class="password-button"
             id="passwordButton">
+
             Enter Members Area
+
         </button>
 
         <div
@@ -1065,7 +1120,9 @@ footer a {
             <a
                 class="nav-brand"
                 href="https://mkuu-amani.github.io/walsallacestennisclub">
+
                 Walsall Aces Tennis Club
+
             </a>
 
             <div class="nav-links">
@@ -1080,7 +1137,9 @@ footer a {
 
                 <a
                     href="https://mkuu-amani.github.io/walsallacestennisclub">
+
                     Main Website
+
                 </a>
 
             </div>
@@ -1118,11 +1177,12 @@ footer a {
                 <div class="calendar-wrapper">
 
 
-                    <!-- DESKTOP MONTH CALENDAR -->
+                    <!-- DESKTOP FULL CALENDAR -->
 
                     <iframe
+                        id="calendarDesktop"
                         class="calendar-frame calendar-desktop"
-                        src="https://calendar.google.com/calendar/embed?src=walsallaces%40gmail.com&ctz=Europe%2FLondon&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0"
+                        src="https://calendar.google.com/calendar/embed?src=walsallaces%40gmail.com&ctz=Europe%2FLondon&mode=MONTH&showTitle=1&showPrint=1&showTabs=1&showCalendars=1&showTz=1"
                         frameborder="0"
                         scrolling="no"
                         title="Walsall Aces Tennis Club Calendar">
@@ -1132,13 +1192,30 @@ footer a {
                     <!-- MOBILE AGENDA / SCHEDULE -->
 
                     <iframe
+                        id="calendarMobile"
                         class="calendar-frame calendar-mobile"
-                        src="https://calendar.google.com/calendar/embed?src=walsallaces%40gmail.com&ctz=Europe%2FLondon&mode=AGENDA&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0"
+                        src="https://calendar.google.com/calendar/embed?src=walsallaces%40gmail.com&ctz=Europe%2FLondon&mode=AGENDA&showTitle=1&showPrint=1&showTabs=1&showCalendars=1&showTz=1"
                         frameborder="0"
                         scrolling="no"
                         title="Walsall Aces Tennis Club Schedule">
                     </iframe>
 
+
+                </div>
+
+
+                <!-- CALENDAR REFRESH -->
+
+                <div class="calendar-refresh-row">
+
+                    <button
+                        type="button"
+                        id="calendarRefreshButton"
+                        class="calendar-refresh-button">
+
+                        ↻ Refresh Calendar
+
+                    </button>
 
                 </div>
 
@@ -1810,6 +1887,20 @@ const clearFormButton =
 
 
 /* =========================
+   CALENDAR ELEMENTS
+========================= */
+
+const calendarDesktop =
+    document.getElementById("calendarDesktop");
+
+const calendarMobile =
+    document.getElementById("calendarMobile");
+
+const calendarRefreshButton =
+    document.getElementById("calendarRefreshButton");
+
+
+/* =========================
    PASSWORD ACCESS
 ========================= */
 
@@ -1878,6 +1969,85 @@ function checkPassword() {
     }
 
 }
+
+
+/* =========================
+   CALENDAR REFRESH
+========================= */
+
+calendarRefreshButton.addEventListener(
+    "click",
+    function() {
+
+        calendarRefreshButton.classList.add(
+            "refreshing"
+        );
+
+        calendarRefreshButton.textContent =
+            "↻ Refreshing Calendar...";
+
+
+        /*
+         * Refresh whichever calendar is
+         * currently visible.
+         */
+
+        const isMobile =
+            window.matchMedia(
+                "(max-width: 700px)"
+            ).matches;
+
+
+        const activeCalendar =
+            isMobile
+            ? calendarMobile
+            : calendarDesktop;
+
+
+        /*
+         * Reassigning the iframe source forces
+         * Google Calendar to reload.
+         */
+
+        const currentSrc =
+            activeCalendar.src;
+
+
+        activeCalendar.src = "";
+
+
+        setTimeout(
+            function() {
+
+                activeCalendar.src =
+                    currentSrc;
+
+            },
+            50
+        );
+
+
+        /*
+         * Restore button after the reload
+         * has had time to begin.
+         */
+
+        setTimeout(
+            function() {
+
+                calendarRefreshButton.classList.remove(
+                    "refreshing"
+                );
+
+                calendarRefreshButton.textContent =
+                    "↻ Refresh Calendar";
+
+            },
+            1000
+        );
+
+    }
+);
 
 
 /* =========================

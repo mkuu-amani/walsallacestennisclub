@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -299,37 +298,6 @@ body {
 
 .nav-links a:hover {
     color: #7de0a1;
-}
-
-
-/* =========================
-   GALLERY BUTTON
-========================= */
-
-.nav-gallery-button {
-    background: var(--green);
-
-    color: white !important;
-
-    padding: 8px 14px;
-
-    border-radius: 8px;
-
-    font-weight: 700;
-
-    opacity: 1 !important;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-.nav-gallery-button:hover {
-    background: var(--green-dark);
-
-    color: white !important;
-
-    transform: translateY(-1px);
 }
 
 
@@ -1167,12 +1135,10 @@ footer a {
                     Membership
                 </a>
 
-                <a
-                    href="gallery.html"
-                    class="nav-gallery-button">
+                <!-- NEW GALLERY BUTTON -->
 
+                <a href="gallery.html">
                     📸 Gallery
-
                 </a>
 
                 <a
@@ -1665,6 +1631,7 @@ footer a {
                         Membership Created
                     </h3>
 
+
                     <p class="membership-result-intro">
 
                         Your membership details have been successfully
@@ -1972,7 +1939,995 @@ passwordButton.addEventListener(
 );
 
 
-/* Allow Enter*
-```
+/* Allow Enter key */
+
+memberPassword.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            checkPassword();
+
+        }
+
+    }
+);
+
+
+function checkPassword() {
+
+    if (memberPassword.value === MEMBER_PASSWORD) {
+
+        sessionStorage.setItem(
+            SESSION_KEY,
+            "true"
+        );
+
+        passwordError.textContent = "";
+
+        showMembersPage();
+
+    } else {
+
+        passwordError.textContent =
+            "Incorrect password. Please try again.";
+
+        memberPassword.select();
+
+    }
+
+}
+
+
+function returnToMainWebsite(event) {
+
+    if (event) {
+        event.preventDefault();
+    }
+
+    if (window.parent && window.parent !== window) {
+
+        window.parent.postMessage(
+            { type: "watc-home" },
+            "https://mkuu-amani.github.io"
+        );
+
+    } else {
+
+        window.location.href =
+            "https://mkuu-amani.github.io/walsallacestennisclub/";
+
+    }
+
+    return false;
+
+}
+
+
+/* =========================
+   CALENDAR REFRESH
+========================= */
+
+calendarRefreshButton.addEventListener(
+    "click",
+    function() {
+
+        calendarRefreshButton.classList.add(
+            "refreshing"
+        );
+
+        calendarRefreshButton.textContent =
+            "↻ Refreshing Calendar...";
+
+
+        /*
+         * Refresh whichever calendar is
+         * currently visible.
+         */
+
+        const isMobile =
+            window.matchMedia(
+                "(max-width: 700px)"
+            ).matches;
+
+
+        const activeCalendar =
+            isMobile
+            ? calendarMobile
+            : calendarDesktop;
+
+
+        /*
+         * Reassigning the iframe source forces
+         * Google Calendar to reload.
+         */
+
+        const currentSrc =
+            activeCalendar.src;
+
+
+        activeCalendar.src = "";
+
+
+        setTimeout(
+            function() {
+
+                activeCalendar.src =
+                    currentSrc;
+
+            },
+            50
+        );
+
+
+        /*
+         * Restore button after the reload
+         * has had time to begin.
+         */
+
+        setTimeout(
+            function() {
+
+                calendarRefreshButton.classList.remove(
+                    "refreshing"
+                );
+
+                calendarRefreshButton.textContent =
+                    "↻ Refresh Calendar";
+
+            },
+            1000
+        );
+
+    }
+);
+
+
+/* =========================
+   PHOTO CONSENT
+========================= */
+
+photoConsent.addEventListener(
+    "change",
+    function() {
+
+        /*
+         * When checked, disable the hidden "No"
+         * fallback so only "Yes" is submitted.
+         */
+
+        photoConsentFallback.disabled =
+            photoConsent.checked;
+
+    }
+);
+
+
+/* =========================
+   MEMBERSHIP FORM
+========================= */
+
+membershipForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        /*
+         * Browser validation
+         */
+
+        if (!membershipForm.checkValidity()) {
+
+            membershipForm.reportValidity();
+
+            return;
+
+        }
+
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Submitting Membership Details...";
+
+
+        formStatus.textContent =
+            "Please wait while your membership is created.";
+
+        formStatus.className =
+            "form-status success";
+
+
+        try {
+
+            const formData =
+                new FormData(membershipForm);
+
+
+            const response =
+                await fetch(
+                    SCRIPT_URL,
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Network response was not successful."
+                );
+
+            }
+
+
+            const result =
+                await response.json();
+
+
+            if (result.result === "success") {
+
+
+                /*
+                 * Populate the digital membership card
+                 */
+
+                cardMemberName.textContent =
+                    result.memberName || "";
+
+                cardMembershipType.textContent =
+                    result.membershipType || "";
+
+                cardMembershipNumber.textContent =
+                    result.membershipNumber || "";
+
+                cardMembershipStatus.textContent =
+                    result.status || "Active";
+
+
+                /*
+                 * Show confirmation
+                 */
+
+                formStatus.textContent =
+                    "Membership created successfully. Your digital membership card is ready below.";
+
+                formStatus.className =
+                    "form-status success";
+
+
+                /*
+                 * Show card area
+                 */
+
+                membershipResult.style.display =
+                    "block";
+
+
+                /*
+                 * Prevent another submission while
+                 * the card is waiting to be downloaded.
+                 */
+
+                submitButton.disabled = true;
+
+                submitButton.textContent =
+                    "Membership Created";
+
+
+                /*
+                 * Bring the membership card into view
+                 */
+
+                setTimeout(
+                    function() {
+
+                        membershipResult.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    },
+                    150
+                );
+
+
+            } else {
+
+                throw new Error(
+                    result.message ||
+                    result.error ||
+                    "Submission failed."
+                );
+
+            }
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            formStatus.textContent =
+                "Sorry, there was a problem submitting the form. Please try again.";
+
+            formStatus.className =
+                "form-status error";
+
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Submit Membership Details";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   PREPARE CLUB LOGO
+========================= */
+
+async function prepareClubLogo() {
+
+    /*
+     * If we have already converted the logo,
+     * use the cached version.
+     */
+
+    if (clubLogoDataUrl) {
+
+        return clubLogoDataUrl;
+
+    }
+
+
+    try {
+
+        /*
+         * Fetch the logo from Wix.
+         */
+
+        const response =
+            await fetch(
+                CLUB_LOGO_URL
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Logo could not be loaded."
+            );
+
+        }
+
+
+        /*
+         * Convert the downloaded image
+         * into a Blob.
+         */
+
+        const blob =
+            await response.blob();
+
+
+        /*
+         * Convert the Blob into a data URL.
+         *
+         * This embeds the actual logo inside
+         * the downloaded SVG membership card.
+         */
+
+        return await new Promise(
+            function(resolve, reject) {
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onloadend =
+                    function() {
+
+                        clubLogoDataUrl =
+                            reader.result;
+
+                        resolve(
+                            clubLogoDataUrl
+                        );
+
+                    };
+
+
+                reader.onerror =
+                    function(error) {
+
+                        reject(error);
+
+                    };
+
+
+                reader.readAsDataURL(
+                    blob
+                );
+
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Could not prepare club logo:",
+            error
+        );
+
+
+        /*
+         * Return an empty string if the logo
+         * cannot be prepared.
+         */
+
+        return "";
+
+    }
+
+}
+
+
+/* =========================
+   DOWNLOAD DIGITAL CARD
+========================= */
+
+downloadCardButton.addEventListener(
+    "click",
+    downloadMembershipCard
+);
+
+
+async function downloadMembershipCard() {
+
+
+    const memberName =
+        cardMemberName.textContent.trim();
+
+    const membershipType =
+        cardMembershipType.textContent.trim();
+
+    const membershipNumber =
+        cardMembershipNumber.textContent.trim();
+
+    const membershipStatus =
+        cardMembershipStatus.textContent.trim();
+
+
+    if (!memberName || !membershipNumber) {
+
+        return;
+
+    }
+
+
+    downloadCardButton.disabled =
+        true;
+
+    downloadCardButton.textContent =
+        "Preparing Membership Card...";
+
+
+    /*
+     * Prepare the logo before creating
+     * the SVG.
+     */
+
+    const logoDataUrl =
+        await prepareClubLogo();
+
+
+    /*
+     * Create an SVG membership card.
+     *
+     * SVG is used because it remains sharp when
+     * viewed or printed at different sizes.
+     */
+
+    const svg =
+`
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1200"
+    height="700"
+    viewBox="0 0 1200 700">
+
+    <defs>
+
+        <linearGradient
+            id="background"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%">
+
+            <stop
+                offset="0%"
+                stop-color="#071a33"/>
+
+            <stop
+                offset="58%"
+                stop-color="#0d2b4d"/>
+
+            <stop
+                offset="100%"
+                stop-color="#126b40"/>
+
+        </linearGradient>
+
+        <filter
+            id="shadow"
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%">
+
+            <feDropShadow
+                dx="0"
+                dy="12"
+                stdDeviation="15"
+                flood-opacity="0.25"/>
+
+        </filter>
+
+    </defs>
+
+
+    <!-- Card -->
+
+    <rect
+        x="20"
+        y="20"
+        width="1160"
+        height="660"
+        rx="42"
+        fill="url(#background)"
+        filter="url(#shadow)"/>
+
+
+    <!-- Decorative circles -->
+
+    <circle
+        cx="1050"
+        cy="80"
+        r="220"
+        fill="#25a65a"
+        opacity="0.13"/>
+
+    <circle
+        cx="120"
+        cy="650"
+        r="180"
+        fill="#ffffff"
+        opacity="0.04"/>
+
+
+    <!-- Embedded Logo -->
+
+    ${
+        logoDataUrl
+        ? `
+    <image
+        href="${logoDataUrl}"
+        x="75"
+        y="75"
+        width="125"
+        height="125"
+        preserveAspectRatio="xMidYMid meet"/>
+        `
+        : ""
+    }
+
+
+    <!-- Club name -->
+
+    <text
+        x="225"
+        y="115"
+        fill="#ffffff"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="35"
+        font-weight="700">
+
+        Walsall Aces Tennis Club
+
+    </text>
+
+
+    <!-- Card title -->
+
+    <text
+        x="225"
+        y="155"
+        fill="#ffffff"
+        opacity="0.68"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="17"
+        letter-spacing="4">
+
+        DIGITAL MEMBERSHIP CARD
+
+    </text>
+
+
+    <!-- Active badge -->
+
+    <rect
+        x="940"
+        y="105"
+        width="165"
+        height="48"
+        rx="24"
+        fill="#25a65a"/>
+
+    <text
+        x="1022"
+        y="136"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="15"
+        font-weight="700">
+
+        ACTIVE MEMBER
+
+    </text>
+
+
+    <!-- Member name -->
+
+    <text
+        x="75"
+        y="315"
+        fill="#ffffff"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="58"
+        font-weight="700">
+
+        ${escapeSvgText(memberName)}
+
+    </text>
+
+
+    <!-- Divider -->
+
+    <line
+        x1="75"
+        y1="365"
+        x2="1125"
+        y2="365"
+        stroke="#ffffff"
+        stroke-opacity="0.18"
+        stroke-width="2"/>
+
+
+    <!-- Membership type label -->
+
+    <text
+        x="75"
+        y="420"
+        fill="#ffffff"
+        opacity="0.58"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="15"
+        letter-spacing="2">
+
+        MEMBERSHIP TYPE
+
+    </text>
+
+
+    <!-- Membership type -->
+
+    <text
+        x="75"
+        y="455"
+        fill="#ffffff"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="26"
+        font-weight="700">
+
+        ${escapeSvgText(membershipType)}
+
+    </text>
+
+
+    <!-- Membership number label -->
+
+    <text
+        x="445"
+        y="420"
+        fill="#ffffff"
+        opacity="0.58"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="15"
+        letter-spacing="2">
+
+        MEMBERSHIP NUMBER
+
+    </text>
+
+
+    <!-- Membership number -->
+
+    <text
+        x="445"
+        y="455"
+        fill="#ffffff"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="26"
+        font-weight="700">
+
+        ${escapeSvgText(membershipNumber)}
+
+    </text>
+
+
+    <!-- Status label -->
+
+    <text
+        x="875"
+        y="420"
+        fill="#ffffff"
+        opacity="0.58"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="15"
+        letter-spacing="2">
+
+        STATUS
+
+    </text>
+
+
+    <!-- Status -->
+
+    <text
+        x="875"
+        y="455"
+        fill="#ffffff"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="26"
+        font-weight="700">
+
+        ${escapeSvgText(membershipStatus)}
+
+    </text>
+
+
+    <!-- Footer -->
+
+    <line
+        x1="75"
+        y1="550"
+        x2="1125"
+        y2="550"
+        stroke="#ffffff"
+        stroke-opacity="0.12"
+        stroke-width="2"/>
+
+
+    <text
+        x="75"
+        y="600"
+        fill="#ffffff"
+        opacity="0.65"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="16">
+
+        Walsall Aces Tennis Club
+
+    </text>
+
+
+    <text
+        x="1125"
+        y="600"
+        text-anchor="end"
+        fill="#ffffff"
+        opacity="0.65"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="16">
+
+        Digital Membership Card
+
+    </text>
+
+
+</svg>
+`;
+
+
+    /*
+     * Create downloadable SVG file
+     */
+
+    const blob =
+        new Blob(
+            [svg],
+            {
+                type:
+                    "image/svg+xml;charset=utf-8"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+
+    link.download =
+        (
+            membershipNumber ||
+            "Walsall-Aces-Membership-Card"
+        )
+        + "-membership-card.svg";
+
+
+    document.body.appendChild(link);
+
+
+    link.click();
+
+
+    document.body.removeChild(link);
+
+
+    /*
+     * Give the browser a moment to initiate
+     * the download before clearing the form.
+     */
+
+    setTimeout(
+        function() {
+
+            URL.revokeObjectURL(url);
+
+            clearMembershipForm();
+
+        },
+        500
+    );
+
+}
+
+
+/* =========================
+   CLEAR FORM
+========================= */
+
+clearFormButton.addEventListener(
+    "click",
+    function() {
+
+        clearMembershipForm();
+
+    }
+);
+
+
+function clearMembershipForm() {
+
+
+    membershipForm.reset();
+
+
+    /*
+     * Restore hidden photo-consent fallback
+     */
+
+    photoConsentFallback.disabled =
+        false;
+
+
+    /*
+     * Hide membership result
+     */
+
+    membershipResult.style.display =
+        "none";
+
+
+    /*
+     * Clear card information
+     */
+
+    cardMemberName.textContent =
+        "";
+
+    cardMembershipType.textContent =
+        "";
+
+    cardMembershipNumber.textContent =
+        "";
+
+    cardMembershipStatus.textContent =
+        "";
+
+
+    /*
+     * Reset status message
+     */
+
+    formStatus.textContent =
+        "";
+
+    formStatus.className =
+        "form-status";
+
+
+    /*
+     * Restore submit button
+     */
+
+    submitButton.disabled =
+        false;
+
+    submitButton.textContent =
+        "Submit Membership Details";
+
+
+    /*
+     * Restore download button
+     */
+
+    downloadCardButton.disabled =
+        false;
+
+    downloadCardButton.textContent =
+        "Download Digital Membership Card";
+
+
+    /*
+     * Return user to membership form
+     */
+
+    document.getElementById("membership")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+}
+
+
+/* =========================
+   SVG TEXT SAFETY
+========================= */
+
+function escapeSvgText(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&apos;");
+
+}
+
+</script>
+
+</body>
+</html>
 
 
